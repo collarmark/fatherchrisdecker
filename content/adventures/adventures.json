@@ -1,0 +1,5 @@
+{
+  "layout": "adventure.njk",
+  "tags": ["adventure"],
+  "permalink": "/adventures/{{ page.fileSlug }}/"
+}

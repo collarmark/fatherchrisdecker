@@ -1,0 +1,31 @@
+---
+layout: base.njk
+---
+{% block content %}
+<article class="adventure container prose">
+
+  {% if coverImage %}
+  <figure class="adventure__hero">
+    <img src="{{ coverImage }}" alt="{{ title }}" width="1200" height="630" />
+  </figure>
+  {% endif %}
+
+  <header class="adventure__header">
+    <p class="adventure__meta">
+      {% if category %}<span class="tag tag--{{ category }}">{{ category }}</span>{% endif %}
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+      {% if location %}&middot; {{ location }}{% if country %}, {{ country }}{% endif %}{% endif %}
+    </p>
+    <h1 class="adventure__title">{{ title }}</h1>
+  </header>
+
+  <div class="adventure__body">
+    {{ content | safe }}
+  </div>
+
+  <footer class="adventure__footer">
+    <a href="/adventures/" class="btn btn--outline">&larr; Back to Adventures</a>
+  </footer>
+
+</article>
+{% endblock %}

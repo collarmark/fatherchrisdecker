@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if title %}{{ title }} | {% endif %}Father Chris Decker</title>
+  <meta name="description" content="{% if excerpt %}{{ excerpt }}{% else %}The personal site of Father Chris Decker – priest, pilgrim, and artist.{% endif %}" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Outfit:wght@300;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="/" class="nav__brand">Father Chris Decker</a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="nav-menu" role="list">
+        <li><a href="/" class="nav__link{% if page.url == '/' %} nav__link--active{% endif %}">Home</a></li>
+        <li><a href="/blog/" class="nav__link{% if '/blog' in page.url %} nav__link--active{% endif %}">Blog</a></li>
+        <li><a href="/adventures/" class="nav__link{% if '/adventures' in page.url %} nav__link--active{% endif %}">Adventures</a></li>
+        <li><a href="/galleries/" class="nav__link{% if '/galleries' in page.url %} nav__link--active{% endif %}">Art</a></li>
+        <li><a href="/camino/" class="nav__link{% if '/camino' in page.url %} nav__link--active{% endif %}">Camino</a></li>
+        <li><a href="/about/" class="nav__link{% if '/about' in page.url %} nav__link--active{% endif %}">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main-content">
+    {% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ "now" | dateFormat("yyyy") }} Father Chris Decker &middot; Built with prayer and static HTML</p>
+    </div>
+  </footer>
+
+  <!-- Nav toggle script -->
+  <script>
+    const toggle = document.querySelector('.nav__toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('nav__links--open', !open);
+    });
+  </script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

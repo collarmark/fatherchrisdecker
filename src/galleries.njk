@@ -1,0 +1,68 @@
+---
+layout: base.njk
+title: Art & Galleries
+permalink: /galleries/
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Art &amp; Galleries</h1>
+    <p>Sacred art, sci-fi illustrations, graphic design, and more.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Category filter -->
+    <div class="filter-bar" role="group" aria-label="Filter galleries by category">
+      <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="sacred-art">Sacred Art</button>
+      <button class="filter-btn" data-filter="sci-fi">Sci-Fi</button>
+      <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+      <button class="filter-btn" data-filter="inktober">Inktober</button>
+      <button class="filter-btn" data-filter="illustration">Illustration</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+
+    <div class="card-grid" id="galleries-grid">
+      {% for gallery in collections.gallery %}
+      <article class="card card--gallery" data-category="{{ gallery.data.category }}">
+        {% if gallery.data.coverImage %}
+        <a href="{{ gallery.url }}" class="card__img-link">
+          <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy" />
+        </a>
+        {% endif %}
+        <div class="card__body">
+          <p class="card__meta">
+            {% if gallery.data.category %}<span class="tag">{{ gallery.data.category | replace("-", " ") | title }}</span>{% endif %}
+            {% if gallery.data.year %}<span>{{ gallery.data.year }}</span>{% endif %}
+          </p>
+          <h2 class="card__title"><a href="{{ gallery.url }}">{{ gallery.data.title }}</a></h2>
+          {% if gallery.data.images %}<p class="card__count">{{ gallery.data.images | length }} image{% if gallery.data.images.length != 1 %}s{% endif %}</p>{% endif %}
+        </div>
+      </article>
+      {% else %}
+      <p>No galleries yet.</p>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% block scripts %}
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#galleries-grid .card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+      btn.classList.add('filter-btn--active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+{% endblock %}

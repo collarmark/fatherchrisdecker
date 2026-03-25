@@ -1,0 +1,49 @@
+---
+layout: base.njk
+---
+{% block content %}
+<article class="camino-entry container prose">
+
+  <header class="camino-entry__header">
+    <p class="camino-entry__meta">
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+      {% if stage %} &middot; {{ stage }}{% endif %}
+    </p>
+    <h1 class="camino-entry__title">{{ title }}</h1>
+
+    {% if startLocation or endLocation or distance %}
+    <div class="camino-entry__stats">
+      {% if startLocation %}
+      <span class="stat"><strong>From:</strong> {{ startLocation }}</span>
+      {% endif %}
+      {% if endLocation %}
+      <span class="stat"><strong>To:</strong> {{ endLocation }}</span>
+      {% endif %}
+      {% if distance %}
+      <span class="stat"><strong>Distance:</strong> {{ distance }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="camino-entry__body">
+    {{ content | safe }}
+  </div>
+
+  {% if images and images.length %}
+  <div class="camino-entry__gallery gallery-grid">
+    {% for item in images %}
+    <figure class="gallery-grid__item">
+      <img src="{{ item.image }}" alt="{{ item.caption or title }}" loading="lazy" />
+      {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <footer class="camino-entry__footer">
+    <a href="/camino/" class="btn btn--outline">&larr; Back to Camino Journal</a>
+  </footer>
+
+</article>
+{% endblock %}

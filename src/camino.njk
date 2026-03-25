@@ -1,0 +1,35 @@
+---
+layout: base.njk
+title: Camino Journal
+permalink: /camino/
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Camino Journal</h1>
+    <p>Day-by-day reflections from the pilgrim road.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <ol class="camino-list" reversed>
+      {% for entry in collections.camino | reverse %}
+      <li class="camino-list__item">
+        <div class="camino-list__stage">
+          {% if entry.data.stage %}<span class="tag">{{ entry.data.stage }}</span>{% endif %}
+          <time datetime="{{ entry.date | dateFormat('yyyy-MM-dd') }}">{{ entry.date | dateFormat('MMMM d, yyyy') }}</time>
+        </div>
+        <div class="camino-list__content">
+          <h2 class="camino-list__title"><a href="{{ entry.url }}">{{ entry.data.title }}</a></h2>
+          {% if entry.data.startLocation and entry.data.endLocation %}
+          <p class="camino-list__route">{{ entry.data.startLocation }} &rarr; {{ entry.data.endLocation }}{% if entry.data.distance %} ({{ entry.data.distance }}){% endif %}</p>
+          {% endif %}
+        </div>
+      </li>
+      {% else %}
+      <li>No journal entries yet.</li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

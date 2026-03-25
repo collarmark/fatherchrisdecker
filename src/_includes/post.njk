@@ -1,0 +1,30 @@
+---
+layout: base.njk
+---
+{% block content %}
+<article class="post container prose">
+
+  {% if image %}
+  <figure class="post__hero">
+    <img src="{{ image }}" alt="{{ title }}" width="1200" height="630" />
+  </figure>
+  {% endif %}
+
+  <header class="post__header">
+    <p class="post__meta">
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+    </p>
+    <h1 class="post__title">{{ title }}</h1>
+    {% if excerpt %}<p class="post__excerpt">{{ excerpt }}</p>{% endif %}
+  </header>
+
+  <div class="post__body">
+    {{ content | safe }}
+  </div>
+
+  <footer class="post__footer">
+    <a href="/blog/" class="btn btn--outline">&larr; Back to Blog</a>
+  </footer>
+
+</article>
+{% endblock %}

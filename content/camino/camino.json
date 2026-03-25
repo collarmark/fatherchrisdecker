@@ -1,0 +1,5 @@
+{
+  "layout": "camino-entry.njk",
+  "tags": ["camino"],
+  "permalink": "/camino/{{ page.fileSlug }}/"
+}

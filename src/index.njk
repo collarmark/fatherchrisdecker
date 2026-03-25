@@ -1,0 +1,85 @@
+---
+layout: base.njk
+title: Home
+permalink: /
+---
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero__inner container">
+    <p class="hero__eyebrow">Welcome</p>
+    <h1 class="hero__title">Father Chris Decker</h1>
+    <p class="hero__subtitle">Priest &middot; Pilgrim &middot; Artist</p>
+    <div class="hero__rule"></div>
+    <a href="/about/" class="btn btn--gold">Learn More</a>
+  </div>
+</section>
+
+<!-- ===================== RECENT POSTS ===================== -->
+<section class="section section--light">
+  <div class="container">
+    <header class="section__header">
+      <h2 class="section__heading">Recent Posts</h2>
+    </header>
+    <div class="card-grid">
+      {% for post in collections.post | limit(3) %}
+      <article class="card">
+        {% if post.data.image %}
+        <a href="{{ post.url }}" class="card__img-link">
+          <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" />
+        </a>
+        {% endif %}
+        <div class="card__body">
+          <p class="card__meta"><time datetime="{{ post.date | dateFormat('yyyy-MM-dd') }}">{{ post.date | dateFormat('MMM d, yyyy') }}</time></p>
+          <h3 class="card__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+          {% if post.data.excerpt %}<p class="card__excerpt">{{ post.data.excerpt }}</p>{% endif %}
+        </div>
+      </article>
+      {% else %}
+      <p class="section__empty">No posts yet — check back soon.</p>
+      {% endfor %}
+    </div>
+    <p class="section__cta"><a href="/blog/" class="btn btn--outline">All Posts &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ===================== ADVENTURES TEASER ===================== -->
+<section class="section">
+  <div class="container">
+    <header class="section__header">
+      <h2 class="section__heading">Latest Adventures</h2>
+    </header>
+    <div class="card-grid">
+      {% for adv in collections.adventure | limit(3) %}
+      <article class="card">
+        {% if adv.data.coverImage %}
+        <a href="{{ adv.url }}" class="card__img-link">
+          <img src="{{ adv.data.coverImage }}" alt="{{ adv.data.title }}" loading="lazy" />
+        </a>
+        {% endif %}
+        <div class="card__body">
+          <p class="card__meta">
+            {% if adv.data.category %}<span class="tag tag--{{ adv.data.category }}">{{ adv.data.category }}</span>{% endif %}
+            {% if adv.data.location %}{{ adv.data.location }}{% endif %}
+          </p>
+          <h3 class="card__title"><a href="{{ adv.url }}">{{ adv.data.title }}</a></h3>
+        </div>
+      </article>
+      {% else %}
+      <p class="section__empty">No adventures yet.</p>
+      {% endfor %}
+    </div>
+    <p class="section__cta"><a href="/adventures/" class="btn btn--outline">All Adventures &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ===================== CAMINO TEASER ===================== -->
+<section class="section section--light">
+  <div class="container camino-teaser">
+    <div class="camino-teaser__text">
+      <h2 class="section__heading">The Camino Journal</h2>
+      <p>Walking the ancient pilgrimage routes of Europe, one step at a time.</p>
+      <a href="/camino/" class="btn btn--gold">Read the Journal &rarr;</a>
+    </div>
+  </div>
+</section>

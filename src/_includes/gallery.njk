@@ -1,0 +1,35 @@
+---
+layout: base.njk
+---
+{% block content %}
+<article class="gallery-page container">
+
+  <header class="gallery-page__header">
+    <p class="gallery-page__meta">
+      {% if category %}<span class="tag">{{ category | replace("-", " ") | title }}</span>{% endif %}
+      {% if year %}<span>{{ year }}</span>{% endif %}
+    </p>
+    <h1 class="gallery-page__title">{{ title }}</h1>
+  </header>
+
+  {% if images and images.length %}
+  <div class="gallery-grid">
+    {% for item in images %}
+    <figure class="gallery-grid__item">
+      <a href="{{ item.image }}" class="gallery-grid__link" data-lightbox="{{ title }}">
+        <img src="{{ item.image }}" alt="{{ item.caption or title }}" loading="lazy" />
+      </a>
+      {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="gallery-page__empty">No images yet.</p>
+  {% endif %}
+
+  <footer class="gallery-page__footer">
+    <a href="/galleries/" class="btn btn--outline">&larr; Back to Art</a>
+  </footer>
+
+</article>
+{% endblock %}

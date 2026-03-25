@@ -1,0 +1,37 @@
+---
+layout: base.njk
+title: Blog
+permalink: /blog/
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Blog</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="post-list">
+      {% for post in collections.post %}
+      <article class="post-list__item">
+        {% if post.data.image %}
+        <a href="{{ post.url }}" class="post-list__img-link">
+          <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" />
+        </a>
+        {% endif %}
+        <div class="post-list__content">
+          <p class="post-list__meta">
+            <time datetime="{{ post.date | dateFormat('yyyy-MM-dd') }}">{{ post.date | dateFormat('MMMM d, yyyy') }}</time>
+          </p>
+          <h2 class="post-list__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+          {% if post.data.excerpt %}<p class="post-list__excerpt">{{ post.data.excerpt }}</p>{% endif %}
+          <a href="{{ post.url }}" class="btn btn--outline btn--sm">Read More &rarr;</a>
+        </div>
+      </article>
+      {% else %}
+      <p>No posts yet. Check back soon.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
