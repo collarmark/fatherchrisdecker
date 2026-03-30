@@ -12,23 +12,21 @@ permalink: /blog/
 
 <section class="section">
   <div class="container">
-    <div class="post-list">
+    <div class="overlay-grid">
       {% for post in collections.post %}
-      <article class="post-list__item">
+      <a href="{{ post.url }}" class="overlay-card">
         {% if post.data.image %}
-        <a href="{{ post.url }}" class="post-list__img-link">
-          <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" />
-        </a>
+        <img class="overlay-card__img" src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy"{% if post.data.coverImagePosition %} style="object-position: {{ post.data.coverImagePosition }}"{% endif %} />
+        {% else %}
+        <div class="overlay-card__img overlay-card__img--placeholder"></div>
         {% endif %}
-        <div class="post-list__content">
-          <p class="post-list__meta">
-            <time datetime="{{ post.date | dateFormat('yyyy-MM-dd') }}">{{ post.date | dateFormat('MMMM d, yyyy') }}</time>
-          </p>
-          <h2 class="post-list__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-          {% if post.data.excerpt %}<p class="post-list__excerpt">{{ post.data.excerpt }}</p>{% endif %}
-          <a href="{{ post.url }}" class="btn btn--outline btn--sm">Read More &rarr;</a>
+        <div class="overlay-card__overlay"></div>
+        <div class="overlay-card__info">
+          <span class="overlay-card__meta">{{ post.date | dateFormat('MMMM d, yyyy') }}</span>
+          <span class="overlay-card__title">{{ post.data.title }}</span>
+          {% if post.data.excerpt %}<span class="overlay-card__excerpt">{{ post.data.excerpt }}</span>{% endif %}
         </div>
-      </article>
+      </a>
       {% else %}
       <p>No posts yet. Check back soon.</p>
       {% endfor %}

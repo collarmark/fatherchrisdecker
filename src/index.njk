@@ -4,82 +4,122 @@ title: Home
 permalink: /
 ---
 
-<!-- ===================== HERO ===================== -->
-<section class="hero">
-  <div class="hero__inner container">
-    <p class="hero__eyebrow">Welcome</p>
-    <h1 class="hero__title">Father Chris Decker</h1>
-    <p class="hero__subtitle">Priest &middot; Pilgrim &middot; Artist</p>
-    <div class="hero__rule"></div>
-    <a href="/about/" class="btn btn--gold">Learn More</a>
+{# ===================== HOME HERO ===================== #}
+{# Portrait image: place hero-portrait.jpg at src/assets/images/hero-portrait.jpg #}
+<section class="home-hero" style="--hero-image: url('/assets/images/hero-bg.jpg')">
+  <div class="home-hero__content">
+    <div class="home-hero__content-inner">
+      <h1 class="home-hero__name">Father<br>Chris Decker</h1>
+      <p class="home-hero__tagline">Priest &middot; Pilgrim &middot; Artist</p>
+      <div class="home-hero__rule"></div>
+      <p class="home-hero__text">
+        Welcome to the online home of Father Christopher Decker — Catholic priest of the Diocese of Baton Rouge,
+        artist, and pilgrim. Here you will find reflections from the road, sacred and imaginative art,
+        dispatches from the Camino and beyond, and the occasional thought from the rectory.
+      </p>
+    </div>
+    <!-- <div class="home-hero__byline">
+      <span class="home-hero__byline-name">Fr. Chris Decker</span>
+      <span class="home-hero__byline-role">Pastor &middot; Artist &middot; Pilgrim</span>
+    </div> -->
+  </div>
+  <div class="home-hero__portrait">
+    <img src="/assets/images/hero-portrait.jpg" alt="Father Chris Decker" />
   </div>
 </section>
 
-<!-- ===================== RECENT POSTS ===================== -->
-<section class="section section--light">
+{# ===================== RECENT POSTS ===================== #}
+<section class="section home-row">
   <div class="container">
-    <header class="section__header">
-      <h2 class="section__heading">Recent Posts</h2>
-    </header>
-    <div class="card-grid">
+    <div class="home-row__header">
+      <p class="home-row__eyebrow">Writing</p>
+      <div class="home-row__title-row">
+        <h2 class="home-row__title">Recent Posts</h2>
+        <a href="/blog/" class="home-row__viewall">View all &rarr;</a>
+      </div>
+      <div class="home-row__rule"></div>
+    </div>
+    <div class="home-row__grid">
       {% for post in collections.post | limit(3) %}
-      <article class="card">
+      <a href="{{ post.url }}" class="overlay-card">
         {% if post.data.image %}
-        <a href="{{ post.url }}" class="card__img-link">
-          <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" />
-        </a>
+        <img class="overlay-card__img" src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy"{% if post.data.coverImagePosition %} style="object-position: {{ post.data.coverImagePosition }}"{% endif %} />
+        {% else %}
+        <div class="overlay-card__img overlay-card__img--placeholder"></div>
         {% endif %}
-        <div class="card__body">
-          <p class="card__meta"><time datetime="{{ post.date | dateFormat('yyyy-MM-dd') }}">{{ post.date | dateFormat('MMM d, yyyy') }}</time></p>
-          <h3 class="card__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-          {% if post.data.excerpt %}<p class="card__excerpt">{{ post.data.excerpt }}</p>{% endif %}
+        <div class="overlay-card__overlay"></div>
+        <div class="overlay-card__info">
+          <span class="overlay-card__meta">{{ post.date | dateFormat('MMMM d, yyyy') }}</span>
+          <span class="overlay-card__title">{{ post.data.title }}</span>
         </div>
-      </article>
+      </a>
       {% else %}
       <p class="section__empty">No posts yet — check back soon.</p>
       {% endfor %}
     </div>
-    <p class="section__cta"><a href="/blog/" class="btn btn--outline">All Posts &rarr;</a></p>
   </div>
 </section>
 
-<!-- ===================== ADVENTURES TEASER ===================== -->
-<section class="section">
+{# ===================== ADVENTURES ===================== #}
+<section class="section section--light home-row">
   <div class="container">
-    <header class="section__header">
-      <h2 class="section__heading">Latest Adventures</h2>
-    </header>
-    <div class="card-grid">
+    <div class="home-row__header">
+      <p class="home-row__eyebrow">Travel</p>
+      <div class="home-row__title-row">
+        <h2 class="home-row__title">Adventures</h2>
+        <a href="/adventures/" class="home-row__viewall">View all &rarr;</a>
+      </div>
+      <div class="home-row__rule"></div>
+    </div>
+    <div class="home-row__grid">
       {% for adv in collections.adventure | limit(3) %}
-      <article class="card">
+      <a href="{{ adv.url }}" class="overlay-card">
         {% if adv.data.coverImage %}
-        <a href="{{ adv.url }}" class="card__img-link">
-          <img src="{{ adv.data.coverImage }}" alt="{{ adv.data.title }}" loading="lazy" />
-        </a>
+        <img class="overlay-card__img" src="{{ adv.data.coverImage }}" alt="{{ adv.data.title }}" loading="lazy"{% if adv.data.coverImagePosition %} style="object-position: {{ adv.data.coverImagePosition }}"{% endif %} />
+        {% else %}
+        <div class="overlay-card__img overlay-card__img--placeholder"></div>
         {% endif %}
-        <div class="card__body">
-          <p class="card__meta">
-            {% if adv.data.category %}<span class="tag tag--{{ adv.data.category }}">{{ adv.data.category }}</span>{% endif %}
-            {% if adv.data.location %}{{ adv.data.location }}{% endif %}
-          </p>
-          <h3 class="card__title"><a href="{{ adv.url }}">{{ adv.data.title }}</a></h3>
+        <div class="overlay-card__overlay"></div>
+        <div class="overlay-card__info">
+          <span class="overlay-card__meta">{{ adv.data.location }}{% if adv.data.country %}, {{ adv.data.country }}{% endif %}</span>
+          <span class="overlay-card__title">{{ adv.data.title }}</span>
         </div>
-      </article>
+      </a>
       {% else %}
       <p class="section__empty">No adventures yet.</p>
       {% endfor %}
     </div>
-    <p class="section__cta"><a href="/adventures/" class="btn btn--outline">All Adventures &rarr;</a></p>
   </div>
 </section>
 
-<!-- ===================== CAMINO TEASER ===================== -->
-<section class="section section--light">
-  <div class="container camino-teaser">
-    <div class="camino-teaser__text">
-      <h2 class="section__heading">The Camino Journal</h2>
-      <p>Walking the ancient pilgrimage routes of Europe, one step at a time.</p>
-      <a href="/camino/" class="btn btn--gold">Read the Journal &rarr;</a>
+{# ===================== FROM THE GALLERY ===================== #}
+<section class="section home-row">
+  <div class="container">
+    <div class="home-row__header">
+      <p class="home-row__eyebrow">Art</p>
+      <div class="home-row__title-row">
+        <h2 class="home-row__title">From the Gallery</h2>
+        <a href="/galleries/" class="home-row__viewall">View all &rarr;</a>
+      </div>
+      <div class="home-row__rule"></div>
+    </div>
+    <div class="home-row__grid">
+      {% for gal in collections.gallery | limit(3) %}
+      <a href="{{ gal.url }}" class="overlay-card">
+        {% if gal.data.coverImage %}
+        <img class="overlay-card__img" src="{{ gal.data.coverImage }}" alt="{{ gal.data.title }}" loading="lazy"{% if gal.data.coverImagePosition %} style="object-position: {{ gal.data.coverImagePosition }}"{% endif %} />
+        {% else %}
+        <div class="overlay-card__img overlay-card__img--placeholder"></div>
+        {% endif %}
+        <div class="overlay-card__overlay"></div>
+        <div class="overlay-card__info">
+          <span class="overlay-card__meta">{{ gal.data.category | replace("-", " ") }}</span>
+          <span class="overlay-card__title">{{ gal.data.title }}</span>
+        </div>
+      </a>
+      {% else %}
+      <p class="section__empty">No gallery items yet.</p>
+      {% endfor %}
     </div>
   </div>
 </section>

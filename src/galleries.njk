@@ -25,23 +25,23 @@ permalink: /galleries/
       <button class="filter-btn" data-filter="other">Other</button>
     </div>
 
-    <div class="card-grid" id="galleries-grid">
+    <div class="overlay-grid" id="galleries-grid">
       {% for gallery in collections.gallery %}
-      <article class="card card--gallery" data-category="{{ gallery.data.category }}">
+      <a href="{{ gallery.url }}" class="overlay-card" data-category="{{ gallery.data.category }}">
         {% if gallery.data.coverImage %}
-        <a href="{{ gallery.url }}" class="card__img-link">
-          <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy" />
-        </a>
+        <img class="overlay-card__img" src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy"{% if gallery.data.coverImagePosition %} style="object-position: {{ gallery.data.coverImagePosition }}"{% endif %} />
+        {% else %}
+        <div class="overlay-card__img overlay-card__img--placeholder"></div>
         {% endif %}
-        <div class="card__body">
-          <p class="card__meta">
-            {% if gallery.data.category %}<span class="tag">{{ gallery.data.category | replace("-", " ") | title }}</span>{% endif %}
-            {% if gallery.data.year %}<span>{{ gallery.data.year }}</span>{% endif %}
-          </p>
-          <h2 class="card__title"><a href="{{ gallery.url }}">{{ gallery.data.title }}</a></h2>
-          {% if gallery.data.images %}<p class="card__count">{{ gallery.data.images | length }} image{% if gallery.data.images.length != 1 %}s{% endif %}</p>{% endif %}
+        <div class="overlay-card__overlay"></div>
+        <div class="overlay-card__info">
+          <span class="overlay-card__meta">
+            {% if gallery.data.category %}{{ gallery.data.category | replace("-", " ") }}{% endif %}
+            {% if gallery.data.year %} &middot; {{ gallery.data.year }}{% endif %}
+          </span>
+          <span class="overlay-card__title">{{ gallery.data.title }}</span>
         </div>
-      </article>
+      </a>
       {% else %}
       <p>No galleries yet.</p>
       {% endfor %}
@@ -53,7 +53,7 @@ permalink: /galleries/
 {% block scripts %}
 <script>
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('#galleries-grid .card');
+  const cards = document.querySelectorAll('#galleries-grid .overlay-card');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('filter-btn--active'));

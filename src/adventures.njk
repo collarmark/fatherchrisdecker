@@ -4,7 +4,8 @@ title: Adventures
 permalink: /adventures/
 ---
 {% block head %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 {% endblock %}
 
 <section class="page-hero">
@@ -16,7 +17,7 @@ permalink: /adventures/
 
 <!-- ===================== MAP ===================== -->
 <section class="adventures-map-section">
-  <div id="adventures-map" aria-label="Map of adventures"></div>
+  <div id="adventures-map" style="height:500px" aria-label="Map of adventures"></div>
 </section>
 
 <!-- ===================== GRID ===================== -->
@@ -33,23 +34,24 @@ permalink: /adventures/
       <button class="filter-btn" data-filter="personal">Personal</button>
     </div>
 
-    <div class="card-grid" id="adventures-grid">
+    <div class="overlay-grid" id="adventures-grid">
       {% for adv in collections.adventure %}
-      <article class="card" data-category="{{ adv.data.category }}">
+      <a href="{{ adv.url }}" class="overlay-card" data-category="{{ adv.data.category }}">
         {% if adv.data.coverImage %}
-        <a href="{{ adv.url }}" class="card__img-link">
-          <img src="{{ adv.data.coverImage }}" alt="{{ adv.data.title }}" loading="lazy" />
-        </a>
+        <img class="overlay-card__img" src="{{ adv.data.coverImage }}" alt="{{ adv.data.title }}" loading="lazy"{% if adv.data.coverImagePosition %} style="object-position: {{ adv.data.coverImagePosition }}"{% endif %} />
+        {% else %}
+        <div class="overlay-card__img overlay-card__img--placeholder"></div>
         {% endif %}
-        <div class="card__body">
-          <p class="card__meta">
-            {% if adv.data.category %}<span class="tag tag--{{ adv.data.category }}">{{ adv.data.category }}</span>{% endif %}
-            <time datetime="{{ adv.date | dateFormat('yyyy-MM-dd') }}">{{ adv.date | dateFormat('MMM yyyy') }}</time>
-          </p>
-          <h2 class="card__title"><a href="{{ adv.url }}">{{ adv.data.title }}</a></h2>
-          {% if adv.data.location %}<p class="card__location">{{ adv.data.location }}{% if adv.data.country %}, {{ adv.data.country }}{% endif %}</p>{% endif %}
+        <div class="overlay-card__overlay"></div>
+        <div class="overlay-card__info">
+          <span class="overlay-card__meta">
+            {% if adv.data.category %}{{ adv.data.category }}{% endif %}
+            {% if adv.data.category and adv.data.location %} &middot; {% endif %}
+            {% if adv.data.location %}{{ adv.data.location }}{% if adv.data.country %}, {{ adv.data.country }}{% endif %}{% endif %}
+          </span>
+          <span class="overlay-card__title">{{ adv.data.title }}</span>
         </div>
-      </article>
+      </a>
       {% else %}
       <p>No adventures yet.</p>
       {% endfor %}
@@ -58,7 +60,6 @@ permalink: /adventures/
 </section>
 
 {% block scripts %}
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLcE=" crossorigin=""></script>
 <script>
   // ---- Map init ----
   const map = L.map('adventures-map', { scrollWheelZoom: false }).setView([20, 10], 2);
@@ -105,7 +106,7 @@ permalink: /adventures/
 
   // ---- Category filter ----
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('#adventures-grid .card');
+  const cards = document.querySelectorAll('#adventures-grid .overlay-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {

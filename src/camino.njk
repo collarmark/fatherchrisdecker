@@ -4,31 +4,49 @@ title: Camino Journal
 permalink: /camino/
 ---
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Camino Journal</h1>
-    <p>Day-by-day reflections from the pilgrim road.</p>
+<div class="post-banner">
+  <img class="post-banner__img" src="/assets/images/2018-Camino/decker-camino-walking.jpeg" alt="Pilgrim walking the Camino" loading="eager" />
+  <div class="post-banner__overlay"></div>
+  <div class="post-banner__text">
+    <h1 class="post-banner__title">Camino Journal</h1>
+    <p class="post-banner__meta">Day-by-day reflections from the pilgrim road.</p>
   </div>
-</section>
+</div>
 
-<section class="section">
+<section class="section camino-timeline-section">
   <div class="container">
-    <ol class="camino-list" reversed>
-      {% for entry in collections.camino | reverse %}
-      <li class="camino-list__item">
-        <div class="camino-list__stage">
-          {% if entry.data.stage %}<span class="tag">{{ entry.data.stage }}</span>{% endif %}
-          <time datetime="{{ entry.date | dateFormat('yyyy-MM-dd') }}">{{ entry.date | dateFormat('MMMM d, yyyy') }}</time>
+    <ol class="camino-timeline" reversed>
+      {% for entry in collections.camino %}
+      <li class="camino-tl-item">
+        <div class="camino-tl-item__thread" aria-hidden="true">
+          <span class="camino-tl-item__dot"></span>
         </div>
-        <div class="camino-list__content">
-          <h2 class="camino-list__title"><a href="{{ entry.url }}">{{ entry.data.title }}</a></h2>
-          {% if entry.data.startLocation and entry.data.endLocation %}
-          <p class="camino-list__route">{{ entry.data.startLocation }} &rarr; {{ entry.data.endLocation }}{% if entry.data.distance %} ({{ entry.data.distance }}){% endif %}</p>
+        <a href="{{ entry.url }}" class="camino-tl-item__thumb" tabindex="-1" aria-hidden="true">
+          {% if entry.data.coverImage %}
+          <img src="{{ entry.data.coverImage }}" alt="" loading="lazy"{% if entry.data.coverImagePosition %} style="object-position: {{ entry.data.coverImagePosition }}"{% endif %} />
+          {% else %}
+          <div class="camino-tl-item__thumb--placeholder"></div>
           {% endif %}
+        </a>
+        <div class="camino-tl-item__content">
+          {% if entry.data.stage %}
+          <span class="camino-tl-item__stage">{{ entry.data.stage }}</span>
+          {% endif %}
+          <h2 class="camino-tl-item__title">
+            <a href="{{ entry.url }}">{{ entry.data.title }}</a>
+          </h2>
+          <p class="camino-tl-item__meta">
+            <time datetime="{{ entry.date | dateFormat('yyyy-MM-dd') }}">{{ entry.date | dateFormat('MMMM d, yyyy') }}</time>
+            {% if entry.data.startLocation and entry.data.endLocation %}
+            &middot; {{ entry.data.startLocation }} &rarr; {{ entry.data.endLocation }}{% if entry.data.distance %} ({{ entry.data.distance }}){% endif %}
+            {% endif %}
+          </p>
         </div>
       </li>
       {% else %}
-      <li>No journal entries yet.</li>
+      <li class="camino-tl-item camino-tl-item--empty">
+        <p>No journal entries yet.</p>
+      </li>
       {% endfor %}
     </ol>
   </div>

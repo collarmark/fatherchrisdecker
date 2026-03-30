@@ -21,7 +21,14 @@
   <!-- ===================== NAV ===================== -->
   <header class="site-header">
     <nav class="nav container">
-      <a href="/" class="nav__brand">Father Chris Decker</a>
+      <a href="/" class="nav__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 385.78 500" width="32" height="42" aria-hidden="true" focusable="false">
+          <rect x="11.29" y="11.06" width="363.19" height="363.19" fill="#ffffff"/>
+          <polygon points="374.49 63.76 374.49 11.06 11.29 11.06 11.29 197.5 374.49 63.76" fill="#9A7B2F"/>
+          <polygon points="275.97 162.8 275.97 266.91 83.34 312.5 83.34 211.48 11.29 229.69 11.29 374.25 374.49 374.25 374.49 137.9 275.97 162.8" fill="#0F0E0D"/>
+        </svg>
+        Father Chris Decker
+      </a>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
         <span></span><span></span><span></span>
       </button>
@@ -31,7 +38,14 @@
         <li><a href="/adventures/" class="nav__link{% if '/adventures' in page.url %} nav__link--active{% endif %}">Adventures</a></li>
         <li><a href="/galleries/" class="nav__link{% if '/galleries' in page.url %} nav__link--active{% endif %}">Art</a></li>
         <li><a href="/camino/" class="nav__link{% if '/camino' in page.url %} nav__link--active{% endif %}">Camino</a></li>
-        <li><a href="/about/" class="nav__link{% if '/about' in page.url %} nav__link--active{% endif %}">About</a></li>
+        <li class="nav__dropdown">
+          <a href="/about/" class="nav__link nav__dropdown-toggle{% if '/about' in page.url or '/curriculum-vitae' in page.url or '/contact' in page.url %} nav__link--active{% endif %}">About ▾</a>
+          <ul class="nav__dropdown-menu" role="list">
+            <li><a href="/about/">Biography</a>
+            <li><a href="/curriculum-vitae/"{% if '/curriculum-vitae' in page.url %} class="nav__link--active"{% endif %}>CV</a></li>
+            <li><a href="/contact/"{% if '/contact' in page.url %} class="nav__link--active"{% endif %}>Contact</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
@@ -60,5 +74,278 @@
   </script>
 
   {% block scripts %}{% endblock %}
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lightbox-close" aria-label="Close">&times;</button>
+    <button id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <button id="lightbox-next" aria-label="Next image">&#8250;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <script>
+    (function () {
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lightbox-img');
+      const lbCap   = document.getElementById('lightbox-caption');
+      const lbClose = document.getElementById('lightbox-close');
+      const lbPrev  = document.getElementById('lightbox-prev');
+      const lbNext  = document.getElementById('lightbox-next');
+
+      // Gallery state: array of { src, alt, caption } entries, current index
+      let gallery = [];
+      let galleryIdx = 0;
+
+      const SELECTORS = [
+        '.post__hero img',
+        '.post__body img',
+        '.adventure__hero img',
+        '.adventure__body img',
+        '.camino-entry__body img',
+        '.camino-entry__gallery img',
+        '.prose img'
+      ].join(', ');
+
+      function showSlide(idx) {
+        const item = gallery[idx];
+        lbImg.src = item.src;
+        lbImg.alt = item.alt;
+        lbCap.textContent = item.caption;
+        lbCap.hidden = !item.caption;
+        galleryIdx = idx;
+        lbPrev.hidden = gallery.length <= 1;
+        lbNext.hidden = gallery.length <= 1;
+        lbPrev.disabled = idx === 0;
+        lbNext.disabled = idx === gallery.length - 1;
+      }
+
+      function openSingle(img) {
+        gallery = [{
+          src: img.src,
+          alt: img.alt || '',
+          caption: img.closest('figure')?.querySelector('figcaption')?.textContent
+                || img.alt || ''
+        }];
+        galleryIdx = 0;
+        showSlide(0);
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function openGallery(links, startIdx) {
+        gallery = Array.from(links).map(a => {
+          const img = a.querySelector('img');
+          return {
+            src: a.href,
+            alt: img ? img.alt : '',
+            caption: a.closest('figure')?.querySelector('figcaption')?.textContent
+                  || (img ? img.alt : '') || ''
+          };
+        });
+        galleryIdx = startIdx;
+        showSlide(startIdx);
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function close() {
+        lb.classList.remove('is-open');
+        document.body.style.overflow = '';
+        gallery = [];
+      }
+
+      // Standard image lightbox (post body, adventure, camino, etc.)
+      document.querySelectorAll(SELECTORS).forEach(img => {
+        img.classList.add('lightbox-trigger');
+        img.addEventListener('click', () => openSingle(img));
+      });
+
+      // Gallery grid: intercept link navigation, open lightbox with prev/next
+      document.querySelectorAll('a.gallery-grid__link').forEach(link => {
+        const img = link.querySelector('img');
+        if (img) img.classList.add('lightbox-trigger');
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const group = link.dataset.lightbox;
+          const allLinks = group
+            ? document.querySelectorAll(`a.gallery-grid__link[data-lightbox="${CSS.escape(group)}"]`)
+            : [link];
+          const idx = Array.from(allLinks).indexOf(link);
+          openGallery(allLinks, idx >= 0 ? idx : 0);
+        });
+      });
+
+      lbPrev.addEventListener('click', e => { e.stopPropagation(); if (galleryIdx > 0) showSlide(galleryIdx - 1); });
+      lbNext.addEventListener('click', e => { e.stopPropagation(); if (galleryIdx < gallery.length - 1) showSlide(galleryIdx + 1); });
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'ArrowLeft'  && galleryIdx > 0)                  showSlide(galleryIdx - 1);
+        if (e.key === 'ArrowRight' && galleryIdx < gallery.length - 1) showSlide(galleryIdx + 1);
+      });
+    })();
+  </script>
+
+  <script>
+    /* ── Aside popovers ── */
+    (function () {
+      var popover = document.createElement('div');
+      popover.className = 'aside-popover';
+      document.body.appendChild(popover);
+      var active = null;
+
+      function position(trigger) {
+        var r   = trigger.getBoundingClientRect();
+        var pw  = popover.offsetWidth;
+        var ph  = popover.offsetHeight;
+        var m   = 10;
+        var left = r.left + r.width / 2 - pw / 2;
+        var top  = r.top - ph - m;
+        left = Math.max(m, Math.min(left, window.innerWidth - pw - m));
+        if (top < m) top = r.bottom + m; // flip below if no room above
+        popover.style.left = left + 'px';
+        popover.style.top  = top  + 'px';
+        // Slide arrow to point at trigger center
+        var arrowX = (r.left + r.width / 2) - left;
+        arrowX = Math.max(14, Math.min(arrowX, pw - 14));
+        popover.style.setProperty('--aside-arrow-x', arrowX + 'px');
+      }
+
+      function open(trigger) {
+        active = trigger;
+        popover.innerHTML = trigger.dataset.aside;
+        trigger.classList.add('is-open');
+        popover.classList.add('is-open');
+        requestAnimationFrame(function () { position(trigger); });
+      }
+
+      function close() {
+        if (active) active.classList.remove('is-open');
+        popover.classList.remove('is-open');
+        active = null;
+      }
+
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest('.aside-trigger');
+        if (t) { e.stopPropagation(); active === t ? close() : open(t); return; }
+        if (!popover.contains(e.target)) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { close(); return; }
+        if ((e.key === 'Enter' || e.key === ' ') && document.activeElement.classList.contains('aside-trigger')) {
+          e.preventDefault();
+          var t = document.activeElement;
+          active === t ? close() : open(t);
+        }
+      });
+
+      window.addEventListener('scroll', function () { if (active) position(active); }, { passive: true });
+      window.addEventListener('resize', function () { if (active) position(active); });
+    })();
+  </script>
+
+  <script>
+    /* ── Footnote popups ── */
+    (function () {
+      var fnSection = document.querySelector('.footnotes');
+      if (!fnSection) return;
+
+      /* Build id → inner HTML map from the rendered footnote list */
+      var fnMap = {};
+      fnSection.querySelectorAll('li[id]').forEach(function (li) {
+        var clone = li.cloneNode(true);
+        var backref = clone.querySelector('.footnote-backref');
+        if (backref) backref.parentNode.removeChild(backref);
+        fnMap[li.id] = clone.innerHTML.trim();
+      });
+
+      /* Replace each <sup class="footnote-ref"> with a popup trigger */
+      document.querySelectorAll('sup.footnote-ref').forEach(function (sup) {
+        var link = sup.querySelector('a');
+        if (!link) return;
+        var fnId  = link.getAttribute('href').replace('#', '');
+        var content = fnMap[fnId];
+        if (!content) return;
+        var n = link.textContent.replace(/[\[\]]/g, '');
+
+        var trigger = document.createElement('sup');
+        trigger.className = 'fn-trigger';
+        trigger.setAttribute('tabindex', '0');
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('aria-label', 'Show footnote');
+        trigger.dataset.fn = content;
+        trigger.textContent = n;
+        sup.replaceWith(trigger);
+      });
+
+      /* Shared popup element */
+      var popup     = document.createElement('div');
+      popup.className = 'fn-popup';
+      popup.setAttribute('role', 'tooltip');
+
+      var closeBtn  = document.createElement('button');
+      closeBtn.className = 'fn-close';
+      closeBtn.setAttribute('aria-label', 'Close footnote');
+      closeBtn.innerHTML = '&times;';
+
+      var body = document.createElement('div');
+      popup.appendChild(closeBtn);
+      popup.appendChild(body);
+      document.body.appendChild(popup);
+
+      var active = null;
+
+      function position(trigger) {
+        var r  = trigger.getBoundingClientRect();
+        var pw = popup.offsetWidth;
+        var ph = popup.offsetHeight;
+        var m  = 10;
+        var left = r.left + r.width / 2 - pw / 2;
+        var top  = r.bottom + m;
+        left = Math.max(m, Math.min(left, window.innerWidth  - pw - m));
+        if (top + ph > window.innerHeight - m) top = r.top - ph - m;
+        popup.style.left = left + 'px';
+        popup.style.top  = top  + 'px';
+      }
+
+      function open(trigger) {
+        active = trigger;
+        body.innerHTML = trigger.dataset.fn;
+        popup.classList.add('is-open');
+        requestAnimationFrame(function () { position(trigger); });
+      }
+
+      function close() {
+        popup.classList.remove('is-open');
+        active = null;
+      }
+
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest('.fn-trigger');
+        if (t) { e.stopPropagation(); active === t ? close() : open(t); return; }
+        if (!popup.contains(e.target)) close();
+      });
+
+      closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { close(); return; }
+        if ((e.key === 'Enter' || e.key === ' ') && document.activeElement.classList.contains('fn-trigger')) {
+          e.preventDefault();
+          var t = document.activeElement;
+          active === t ? close() : open(t);
+        }
+      });
+
+      window.addEventListener('scroll', function () { if (active) position(active); }, { passive: true });
+      window.addEventListener('resize', function () { if (active) position(active); });
+    })();
+  </script>
 </body>
 </html>

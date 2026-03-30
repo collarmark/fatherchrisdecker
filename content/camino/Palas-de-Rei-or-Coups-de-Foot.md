@@ -1,0 +1,18 @@
+---
+title: Palas de Rei or “Coups de Foot”
+date: 2018-08-31T00:00:00.000Z
+coverImage: /assets/images/2018-Camino/2018-camino-pallaisderey-01.webp
+coverImagePosition: center top
+---
+
+As I sit down to pen this brief missive, I can hear the sounds of a Galician bagpipe or “gaita”. I’m not sure who, but somebody must be getting their practice in. I’ve been thinking a good bit about how much I like to travel for reasons just like this, to experience life from the point of view of another culture living theirs. I mean, in Louisiana, someone puffing up a bagpipe somewhere other than the St. Patrick’s Day parade at 8:30pm would be taken a strange indeed. I was chatting with a young man who just a few days ago I managed to poke with my bastone as I was collecting my luggage from the train. Oops! I’m like a one-man Laurel & Hardy routine sometimes. Anyway, we happened to meet up on the trail and visited for a bit about how important travel can be for a person to see that life is about so much more than just the little bubble we tend to place around ourselves. Of course, our particular bubble is often our culture, but how much richer our cultures become when we see the lived history of another people unfold before our eyes (and especially before our tastebuds!). Oscar on the Camino today had it right – getting out of the house and into another region of his own country is essential to gain a deeper understanding of others and ourselves. He had also recently been to Belgium and Holland, just to see what it was like. Imagine that! How nice to meet a true explorer in our own day. I’m glad I got the chance to share some of his journey.  That is indeed one of the graces of the Camino, to see the world along a 26 kilometer stretch in Northern Spain every morning the feet hit the gravel/damnable rock/pavement.  Anyway, end of ramble.
+
+Once I checked into the pensión today, which is a step up from an albergue and several steps down from a hotel, my feet had pretty much registered their rebuke in the form of newly appropriated nerve clusters shooting up and down my leg. I suspect they’re mounting a complete coup attempt. They must have been reading up on ol’ Francisco Franco for tips.  Assuming all my limbs will keep functioning, I now have some ceremonial Camino socks (complete with shell embroidery) to wear into Santiago in just three days time. It might also be because I don’t want to do any more sock laundry since they take forever to dry!  But, they’re neat and came in a 2 pack for 20€!
+
+It still kind of seems like forever before I get to plod into Santiago de Compostela. Now, I haven’t walked the complete journey like so many who originated in St. Jean Pied-de-Port, the starting point of the Camino Francés, but I certainly share the “I can’t believe the journey’s end is this close” feeling that I hear echoed among other pilgrims.
+
+This post admittedly is a bit more meanderly— possibly because of exhaustion. But, it could also be that as the kilometers wind down to zero, there’s less to say. There is only to act! Tomorrow is one of those action days, with the hike into Ribadiso da Baixo clocking in at 23.6 kilometers or 16.342 miles for those of you keeping track with the imperial foot. Speaking of feet, I can hear them plotting. Quiet down there! I am the Generalissimo of my body! Sheesh, now you’re hearing my internal monologue.
+
+The terrain is mixed and the morning comes early, so I’ll sign off (much like the bagpiper has just done!) and remember you in prayer as we travel this road together.
+
+![](/assets/images/2018-Camino/2018-camino-01-feet.webp "The Suspicious Feet"){.img-large}

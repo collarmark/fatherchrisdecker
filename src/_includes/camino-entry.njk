@@ -2,14 +2,34 @@
 layout: base.njk
 ---
 {% block content %}
+
+{% set prevEntry = collections.camino | collectionPrev(page.url) %}
+{% set nextEntry = collections.camino | collectionNext(page.url) %}
+
+{% if coverImage and not hideHeroImage %}
+<div class="post-banner">
+  <img class="post-banner__img" src="{{ coverImage }}" alt="{{ title }}" loading="eager"{% if coverImagePosition %} style="object-position: {{ coverImagePosition }}"{% endif %} />
+  <div class="post-banner__overlay"></div>
+  <div class="post-banner__text">
+    <h1 class="post-banner__title">{{ title }}</h1>
+    <p class="post-banner__meta">
+      {% if stage %}{{ stage }} &middot; {% endif %}
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+    </p>
+  </div>
+</div>
+{% endif %}
+
 <article class="camino-entry container prose">
 
   <header class="camino-entry__header">
     <p class="camino-entry__meta">
-      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}{% if time %}T{{ time }}{% endif %}">{{ date | dateFormat('MMMM d, yyyy') }}{% if time %} &middot; {{ time }}{% endif %}</time>
       {% if stage %} &middot; {{ stage }}{% endif %}
     </p>
+    {% if not coverImage or hideHeroImage %}
     <h1 class="camino-entry__title">{{ title }}</h1>
+    {% endif %}
 
     {% if startLocation or endLocation or distance %}
     <div class="camino-entry__stats">
@@ -41,9 +61,23 @@ layout: base.njk
   </div>
   {% endif %}
 
-  <footer class="camino-entry__footer">
-    <a href="/camino/" class="btn btn--outline">&larr; Back to Camino Journal</a>
-  </footer>
+  <nav class="post-nav" aria-label="Camino journal navigation">
+    <div class="post-nav__prev">
+      {% if prevEntry %}
+      <span class="post-nav__label">&larr; Previous</span>
+      <a href="{{ prevEntry.url }}" class="post-nav__title">{{ prevEntry.data.title }}</a>
+      {% endif %}
+    </div>
+    <div class="post-nav__back">
+      <a href="/camino/" class="btn btn--outline btn--sm">Back to Camino Journal</a>
+    </div>
+    <div class="post-nav__next">
+      {% if nextEntry %}
+      <span class="post-nav__label">Next &rarr;</span>
+      <a href="{{ nextEntry.url }}" class="post-nav__title">{{ nextEntry.data.title }}</a>
+      {% endif %}
+    </div>
+  </nav>
 
 </article>
 {% endblock %}

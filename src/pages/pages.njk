@@ -1,0 +1,32 @@
+---
+layout: base.njk
+pagination:
+  data: collections.page
+  size: 1
+  alias: p
+permalink: "/{{ p.data.slug or p.fileSlug }}/"
+eleventyComputed:
+  title: "{{ p.data.title }}"
+---
+
+{% if p.data.coverImage and not p.data.hideHeroImage %}
+<div class="post-banner">
+  <img class="post-banner__img" src="{{ p.data.coverImage }}" alt="{{ p.data.title }}" loading="eager"{% if p.data.coverImagePosition %} style="object-position: {{ p.data.coverImagePosition }}"{% endif %} />
+  <div class="post-banner__overlay"></div>
+  <div class="post-banner__text">
+    <h1 class="post-banner__title">{{ p.data.title }}</h1>
+  </div>
+</div>
+{% else %}
+<section class="page-hero">
+  <div class="container">
+    <h1>{{ p.data.title }}</h1>
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="prose container">
+    {{ p.content | safe }}
+  </div>
+</section>

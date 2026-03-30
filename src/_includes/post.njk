@@ -2,19 +2,32 @@
 layout: base.njk
 ---
 {% block content %}
-<article class="post container prose">
 
-  {% if image %}
-  <figure class="post__hero">
-    <img src="{{ image }}" alt="{{ title }}" width="1200" height="630" />
-  </figure>
-  {% endif %}
+{% set prevPost = collections.post | collectionNext(page.url) %}
+{% set nextPost = collections.post | collectionPrev(page.url) %}
+
+{% if image and not hideHeroImage %}
+<div class="post-banner">
+  <img class="post-banner__img" src="{{ image }}" alt="{{ title }}" loading="eager"{% if coverImagePosition %} style="object-position: {{ coverImagePosition }}"{% endif %} />
+  <div class="post-banner__overlay"></div>
+  <div class="post-banner__text">
+    <h1 class="post-banner__title">{{ title }}</h1>
+    <p class="post-banner__meta">
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}{% if time %}T{{ time }}{% endif %}">{{ date | dateFormat('MMMM d, yyyy') }}{% if time %} &middot; {{ time }}{% endif %}</time>
+    </p>
+  </div>
+</div>
+{% endif %}
+
+<article class="post container prose">
 
   <header class="post__header">
     <p class="post__meta">
-      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}{% if time %}T{{ time }}{% endif %}">{{ date | dateFormat('MMMM d, yyyy') }}{% if time %} &middot; {{ time }}{% endif %}</time>
     </p>
+    {% if not image or hideHeroImage %}
     <h1 class="post__title">{{ title }}</h1>
+    {% endif %}
     {% if excerpt %}<p class="post__excerpt">{{ excerpt }}</p>{% endif %}
   </header>
 
@@ -22,9 +35,23 @@ layout: base.njk
     {{ content | safe }}
   </div>
 
-  <footer class="post__footer">
-    <a href="/blog/" class="btn btn--outline">&larr; Back to Blog</a>
-  </footer>
+  <nav class="post-nav" aria-label="Post navigation">
+    <div class="post-nav__prev">
+      {% if prevPost %}
+      <span class="post-nav__label">&larr; Previous</span>
+      <a href="{{ prevPost.url }}" class="post-nav__title">{{ prevPost.data.title }}</a>
+      {% endif %}
+    </div>
+    <div class="post-nav__back">
+      <a href="/blog/" class="btn btn--outline btn--sm">Back to Blog</a>
+    </div>
+    <div class="post-nav__next">
+      {% if nextPost %}
+      <span class="post-nav__label">Next &rarr;</span>
+      <a href="{{ nextPost.url }}" class="post-nav__title">{{ nextPost.data.title }}</a>
+      {% endif %}
+    </div>
+  </nav>
 
 </article>
 {% endblock %}

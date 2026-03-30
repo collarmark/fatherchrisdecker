@@ -1,0 +1,173 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Sveltia CMS — fatherchrisdecker.com
+#
+# LOCAL DEV:  local_backend: true uses the browser's File System Access API.
+#             Visit /admin/, click "Work with local repository", and select
+#             the project root folder. No proxy server needed.
+#
+# PRODUCTION: Uses GitHub backend with Netlify as OAuth proxy.
+#             Setup: Netlify dashboard → Site configuration → Access control
+#             → OAuth → Install provider → GitHub
+#             Use callback URL: https://api.netlify.com/auth/done
+# ─────────────────────────────────────────────────────────────────────────────
+
+local_backend: true
+
+backend:
+  name: github
+  repo: collarmark/fatherchrisdecker
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: src/assets/images
+public_folder: /assets/images
+
+# ─────────────────────────────────────────────────────────────────────────────
+# COLLECTIONS
+# ─────────────────────────────────────────────────────────────────────────────
+
+collections:
+
+  # ── BLOG POSTS ─────────────────────────────────────────────────────────── #
+  - name: post
+    label: Blog Posts
+    folder: content/posts
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,              label: Title,              widget: string,   required: true }
+      - { name: permalink,          label: "URL / Permalink",  widget: string,   required: false,
+          hint: "Override the URL. Use leading and trailing slashes: /blog/my-slug/ — leave blank to use the filename." }
+      - { name: date,               label: Date,               widget: datetime, required: true, picker_utc: true }
+      - { name: time,               label: Time,               widget: string,   required: false,
+          hint: "Optional. 24-hour HH:MM (e.g. 14:30). Orders multiple posts on the same day." }
+      - { name: image,              label: "Featured Image",   widget: image,    required: false }
+      - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
+          hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
+      - { name: hideHeroImage,      label: "Hide image at top of post", widget: boolean, required: false, default: false }
+      - { name: excerpt,            label: Excerpt,            widget: text,     required: false }
+      - { name: body,               label: Body,               widget: markdown }
+
+  # ── ADVENTURES ─────────────────────────────────────────────────────────── #
+  - name: adventure
+    label: Adventures
+    folder: content/adventures
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,              label: Title,              widget: string,   required: true }
+      - { name: permalink,          label: "URL / Permalink",  widget: string,   required: false,
+          hint: "Override the URL. Use leading and trailing slashes: /adventures/my-slug/" }
+      - { name: date,               label: Date,               widget: datetime, required: true, picker_utc: true }
+      - { name: time,               label: Time,               widget: string,   required: false,
+          hint: "Optional. 24-hour HH:MM (e.g. 14:30). Orders multiple entries on the same day." }
+      - { name: location,           label: Location,           widget: string,   required: false }
+      - { name: country,            label: Country,            widget: string,   required: false }
+      - { name: lat,                label: Latitude,           widget: number,   required: false, value_type: float }
+      - { name: lng,                label: Longitude,          widget: number,   required: false, value_type: float }
+      - name: category
+        label: Category
+        widget: select
+        required: false
+        options: [pilgrimage, travel, retreat, parish, personal]
+      - { name: coverImage,         label: "Cover Image",      widget: image,    required: false }
+      - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
+          hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
+      - { name: hideHeroImage,      label: "Hide image at top of entry", widget: boolean, required: false, default: false }
+      - { name: body,               label: Body,               widget: markdown }
+
+  # ── GALLERIES ──────────────────────────────────────────────────────────── #
+  - name: gallery
+    label: Galleries
+    folder: content/galleries
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,              label: Title,              widget: string,   required: true }
+      - { name: permalink,          label: "URL / Permalink",  widget: string,   required: false,
+          hint: "Override the URL. Use leading and trailing slashes: /galleries/my-slug/" }
+      - name: category
+        label: Category
+        widget: select
+        required: false
+        options: [sacred-art, superheroes, sci-fi, graphic-design, inktober, illustration, other]
+      - { name: year,               label: Year,               widget: string,   required: false }
+      - { name: coverImage,         label: "Cover Image",      widget: image,    required: false }
+      - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
+          hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
+      - name: images
+        label: Images
+        widget: list
+        required: false
+        fields:
+          - { name: image,   label: Image,   widget: image }
+          - { name: caption, label: Caption, widget: string, required: false }
+
+  # ── CAMINO JOURNAL ─────────────────────────────────────────────────────── #
+  - name: camino
+    label: Camino Journal
+    folder: content/camino
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,              label: Title,              widget: string,   required: true }
+      - { name: permalink,          label: "URL / Permalink",  widget: string,   required: false,
+          hint: "Override the URL. Use leading and trailing slashes: /camino/day-01-saint-jean/" }
+      - { name: date,               label: Date,               widget: datetime, required: true, picker_utc: true }
+      - { name: time,               label: Time,               widget: string,   required: false,
+          hint: "Optional. 24-hour HH:MM (e.g. 14:30). Orders multiple entries on the same day." }
+      - { name: stage,              label: Stage,              widget: string,   required: false }
+      - { name: startLocation,      label: "Start Location",   widget: string,   required: false }
+      - { name: endLocation,        label: "End Location",     widget: string,   required: false }
+      - { name: lat,                label: Latitude,           widget: number,   required: false, value_type: float }
+      - { name: lng,                label: Longitude,          widget: number,   required: false, value_type: float }
+      - { name: distance,           label: "Distance (e.g. 22 km)", widget: string, required: false }
+      - { name: coverImage,         label: "Cover Image",      widget: image,    required: false }
+      - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
+          hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
+      - { name: hideHeroImage,      label: "Hide image at top of entry", widget: boolean, required: false, default: false }
+      - name: images
+        label: Images
+        widget: list
+        required: false
+        fields:
+          - { name: image,   label: Image,   widget: image }
+          - { name: caption, label: Caption, widget: string, required: false }
+      - { name: body,               label: Body,               widget: markdown }
+
+  # ── PAGES ──────────────────────────────────────────────────────────────── #
+  - name: pages
+    label: Pages
+    folder: content/pages
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,              label: Title,              widget: string,   required: true }
+      - { name: slug,               label: Slug,               widget: string,   required: false,
+          hint: "Controls the URL path. Leave blank to use the filename." }
+      - name: aliases
+        label: "URL Aliases"
+        widget: list
+        required: false
+        hint: "Additional slugs that redirect to this page (e.g. cv → /curriculum-vitae/)"
+      - { name: coverImage,         label: "Cover Image",      widget: image,    required: false }
+      - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
+          hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
+      - { name: hideHeroImage,      label: "Hide image at top of page", widget: boolean, required: false, default: false }
+      - { name: body,               label: Body,               widget: markdown }
+
+  # ── AUTHORING GUIDE (never published) ──────────────────────────────────── #
+  - name: docs
+    label: "📋 Authoring Guide"
+    folder: docs
+    extension: md
+    create: false
+    fields:
+      - { name: title, label: Title,   widget: string }
+      - { name: body,  label: Content, widget: markdown }

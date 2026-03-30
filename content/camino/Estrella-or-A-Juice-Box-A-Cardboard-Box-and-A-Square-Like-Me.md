@@ -1,0 +1,30 @@
+---
+title: 'Estrella or “A Juice Box, A Cardboard Box, and A Square Like Me.”'
+date: 2018-08-13T00:00:00.000Z
+stage: ''
+startLocation: Puente la Reina
+endLocation: Estrella
+coverImage: /assets/images/2018-Camino/2018-camino-estrella-02.webp
+---
+
+![](/assets/images/2018-Camino/2018-camino-estrella-01.webp)​{.img-medium .float-right}
+
+It’s amazing what a bit of BioFreeze ointment, a few good local beers, and a good night’s sleep (thanks melatonin supplement!) can do. The folks at the albergue were extremely friendly and made their best efforts to communicate in English. Sometimes, a smile and a free coffee make all the difference when one’s world is mid-rock. What a day it was, eh?
+
+Both Fr. Ryan and I decided to send our packs along by car (a steal for €5!) to give our ... well, everything...a chance to recover ate. After a simple breakfast, we made our way to Estrella, stopping periodically at the little towns that have sprung up over the centuries along the Camino route. Figuring up the math, that brings our total to around 28 miles on foot since Pamplona. Blimey, that’s about the distance from my parish church of St. Frances Cabrini in Livonia to the Catholic Life Center in Baton Rouge! It’s only the third day for us living the life on foot, but today was a bit less strenuous, which was a great mercy. Nevertheless, the trail becomes very uneven and seemingly without warning does indeed meander up that steep mountainside you were wondering in your head if you’d have to climb as you saw it in the distance.
+
+But there are so many encouragements along the way. The shell dangling from your backpack (or in my case, my much smaller, “essentials only” day pack today) designates you as a pilgrim, so the standard greeting becomes “¡Buen Camino!” instead of “Buenos Dias.” It’s kind of like being called “Father,” actually. It reminds and encourages my life’s vocation. As my sub-vocation this month is to be a pilgrim without name, that salutation is like a cup of water offered to a triathlete. Speaking of drinkable water, there is something like that out here, too. Almost every town and village along the way has a flowing water fuente where the thirsty pilgrim (or child on the soccer pitch) can refill his vessel or hold her head under the font. Some are quite ornate, some are very simple.
+
+Also, a little collaborative “rest area” popped up right on the route. And on a table under a little tent were all sorts of refreshments that a pilgrim might want! Water, orange juice, peach juice (which I juice-boxed the heck out of), fresh pineapple, melon, and other fruits, local beer, a few assorted candy items, and a little donation box. After a water, the juice, and a few coins dropped in the makeshift till, we were ready to take on the next giant hill – which was waiting for us, of course!![](/assets/images/2018-Camino/2018-camino-estrella-02.webp){.img-medium}
+
+As we made our way out of the last village and into Estrella, which is a slightly larger town with several more restaurants, pharmacies, orthopedic surgeons (Please, O St. James, may I not need one of those!), and a Mailboxes Etc. shipping store. It’s nice to know that, on some level, I’m not the only one who ... slightly overpacked for my Camino.  After checking into a very nice albergue run by the Capuchin Franciscans (with a private room which feels like an extreme luxury in the usual co-ed bunk conditions to say nothing of the BLAZING fast internet connection), I unloaded everything that wasn’t absolutely essential – which admittedly was most of what I was carrying– into a mesh packing cube and hoofed it to the shipping store. I practically skipped into the office and pirouetted the cube onto the counter.
+
+I’m reminded of St. Francis being so filled with joy as he shed his last vestige of connection to the opulence of his family business (all of his clothes!) before embracing the life of holy poverty. The irony that I’m also staying in a converted Franciscan cell this evening is also not lost on me. While I don’t think God is laughing hysterically at me, I do think He’s giving me that knowing smile that fathers give their sons when we finally get it.  Now, there’s still a pack on my back, and it still has items in it, and I’m not going to become a mendicant (a beggar like St. Francis) tomorrow as there are still some Euro in my bank account. But, there was a grace given today and I’ll spend this evening bringing it to the Heart of Jesus tonight. With that, I‘ll bow away from the keyboard for the day and simply thank you, intrepid reader, for your prayers for Fr. Ryan and myself.
+
+Tomorrow looks to be a tough day, but there’s a wine fountain. You heard me.
+
+### A Psalm is worth a Thousand Pictures
+
+![](/assets/images/2018-Camino/2018-camino-estrella-03.webp)
+
+> Psalm 84How lovely is your dwelling place, \*Lord, God of hosts.My soul is longing and yearning, \*is yearning for the courts of the Lord.My heart and my soul ring out their joy \*to God, the living God.The sparrow herself finds a home \*and the swallow a nest for her brood;she lays her young by your altars, \*Lord of hosts, my king and my God.They are happy, who dwell in your house, \*for ever singing your praise.They are happy, whose strength is in you, \*in whose hearts are the roads to Zion.As they go through the Bitter Valley †they make it a place of springs, \*the autumn rain covers it with blessings.They walk with ever growing strength, \*they will see the God of gods in Zion.O Lord God of hosts, hear my prayer, \*give ear, O God of Jacob.Turn your eyes, O God, our shield, \*look on the face of your anointed.One day within your courts \*is better than a thousand elsewhere.The threshold of the house of God \*I prefer to the dwellings of the wicked.For the Lord God is a rampart, a shield; \*he will give us his favor and glory.The Lord will not refuse any good \*to those who walk without blame.Lord, God of hosts, \*happy the man who trusts in you!Glory to the Father, and to the Son, \*and to the Holy Spirit:as it was in the beginning, is now, \*and will be for ever. Amen.
