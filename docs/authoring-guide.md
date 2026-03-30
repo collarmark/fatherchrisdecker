@@ -4,13 +4,43 @@ title: Authoring Guide
 
 # Authoring Guide
 
-This document is a reference for the custom Markdown features and TinaCMS conventions used on this site. It lives in `docs/` and is **never published** to the public site.
+This document is a reference for the custom Markdown features and CMS conventions used on this site. It lives in `docs/` and is **never published** to the public site.
+
+---
+
+## CMS: Sveltia CMS
+
+The site uses **Sveltia CMS** (replacing TinaCMS). The admin panel is at `/admin/`.
+
+### Local development
+
+Two things must be running:
+
+1. **Eleventy** — `npm run dev` (port 8082)
+2. *(nothing else needed)* — Sveltia uses the browser's File System Access API in local mode
+
+Visit `http://localhost:8082/admin/`, click **"Work with local repository"**, and select the project root folder. Sveltia reads and writes `.md` files directly to disk.
+
+### Production (Netlify)
+
+Login uses GitHub OAuth via Netlify as the auth proxy. Netlify Identity is **not** required — only the OAuth app in GitHub settings.
+
+### Key improvement over TinaCMS
+
+Sveltia's markdown editor treats the body field as **raw text**. It does not attempt to parse or reserialize custom syntax. This means:
+
+- `==highlight==` — saved exactly as written ✓
+- `[^footnote]` — saved exactly as written ✓
+- `{.float-right}` — saved exactly as written ✓
+- `[aside: text]` — saved exactly as written ✓
+
+The TinaCMS compatibility warnings below are **no longer applicable** for new editing sessions. Legacy content that was previously mangled by TinaCMS has been cleaned up, but if you encounter a `\==` or `\[^` in a post, that's old TinaCMS damage — just remove the backslash.
 
 ---
 
 ## Image Focal Point
 
-Every content type has a **Image focal point** field in TinaCMS. It controls which part of the cover image stays visible when the image is cropped — on listing cards, the cinematic banner, and the Camino timeline thumbnail.
+Every content type has an **Image focal point** field. It controls which part of the cover image stays visible when cropped — on listing cards, the cinematic banner, and the Camino timeline thumbnail.
 
 The value is a standard CSS `object-position` expression. Leave it blank for the default (`center`).
 
@@ -25,31 +55,26 @@ The value is a standard CSS `object-position` expression. Leave it blank for the
 | `30% 60%` | 30% from left, 60% from top |
 | `center top` | Named keywords can be combined |
 
-**How to find the right value:** open the image in any browser, right-click → "Inspect", find the `<img>` element, and in the Styles panel try different `object-position` values live until the crop looks right. Copy that value into TinaCMS.
+**How to find the right value:** open the image in a browser, right-click → Inspect, find the `<img>` element, and try different `object-position` values live in the Styles panel until the crop looks right. Copy that value into the CMS field.
 
 ---
 
-## ⚠️ TinaCMS Compatibility Warning
+## URL / Permalink Override
 
-TinaCMS's rich-text editor only understands standard Markdown. Any custom syntax it doesn't recognise will be **escaped with backslashes** the next time you open and save that post in TinaCMS, permanently breaking the feature.
+Every collection has a **URL / Permalink** field. Leave it blank to use the filename as the URL (the default). Fill it in to override the URL for that entry.
 
-**Edit these directly in your code editor (VS Code, etc.), not TinaCMS:**
+**Format:** always include leading and trailing slashes.
 
-| Feature | Syntax | What TinaCMS does to it |
-|---|---|---|
-| Highlighted text | `==text==` | Saves as `\==text\==` — broken |
-| Footnote popups | `[^label]` / `[^label]: content` | Saves as `\[^label]` — broken |
-| Image class attrs | `{.float-right}` | Saves as `\{.float-right\}` — broken |
-| Aside (via Embed UI) | `<Aside text="..." />` | Silently dropped — use `[aside: ...]` instead |
+```
+/camino/day-01-saint-jean/
+/blog/my-custom-slug/
+```
 
-**Safe workflow for posts that use these features:**
+If you rename a post's permalink after the site is live, add a redirect to `_redirects` at the project root:
 
-1. Draft the post in TinaCMS (title, date, excerpt, cover image, body text).
-2. Save and close TinaCMS.
-3. Open the `.md` file in VS Code and add footnotes, highlights, and image attrs by hand.
-4. Do not re-open that post body in TinaCMS again. Front matter fields (title, date, image, etc.) are safe to edit in TinaCMS — they are not processed by the rich-text editor.
-
-Alternatively, use the **Raw** toolbar button in TinaCMS to edit Markdown source directly and add custom syntax there — but be cautious about saving after switching back to rich-text view.
+```
+/camino/old-slug/   /camino/new-slug/   301
+```
 
 ---
 
@@ -63,10 +88,9 @@ Wrap text in double equals signs to apply a yellow highlighter effect.
 The Council declared this ==absolutely, unambiguously, definitely settled== doctrine.
 ```
 
-- Works inline anywhere: inside paragraphs, blockquotes, list items, headings.
+- Works inline anywhere: paragraphs, blockquotes, list items, headings.
 - Can span multiple words but should not cross paragraph breaks.
-- Do not use for decorative purposes — `==highlight==` carries the semantic meaning of *marked for relevance*, which is appropriate for emphasis, key terms, or comedic effect.
-- Nests fine with other inline formatting:
+- Nests with other formatting:
 
 ```
 **==bold and highlighted==**
@@ -74,7 +98,7 @@ The Council declared this ==absolutely, unambiguously, definitely settled== doct
 ==combined with a footnote[^fn1]==
 ```
 
-Combined with a footnote popup for maximum comedic layering:
+Combined with a footnote popup:
 
 ```
 The theology of ==cookies[^cookies]== is often overlooked.
@@ -86,11 +110,9 @@ The theology of ==cookies[^cookies]== is often overlooked.
 
 ## Aside Popover (inline annotation)
 
-An aside is an inline `···` pill that reveals a hidden annotation in a popover when clicked. Use it for parenthetical commentary, sarcastic footnotes-without-numbers, or context you want available but unobtrusive.
+An aside is an inline `···` pill that reveals a hidden annotation in a popover when clicked. Use it for parenthetical commentary, sarcastic asides, or context you want available but unobtrusive.
 
-⚠️ **TinaCMS limitation:** The visual Embed button inserts the component correctly in the editor, but TinaCMS silently drops it when saving `.md` files. Use the plain-text syntax below instead.
-
-**Syntax** — type this directly in the Raw editor or in VS Code:
+**Syntax** — type this directly in the Sveltia markdown editor or VS Code:
 
 ```
 [aside: your annotation text here]
@@ -104,43 +126,23 @@ When I got the yen and a free afternoon [aside: ...a planetary alignment which i
 
 **At build time** Eleventy converts `[aside: ...]` to a clickable `···` span. **On the page**, clicking the pill opens a white popover above it with a triangle pointer. Clicking anywhere else closes it. Keyboard accessible: Tab to focus, Enter/Space to open, Escape to close.
 
-**Combining with other features:**
+**Links are supported** inside the popover — use single quotes for `href` values:
 
 ```
-The Council declared this matter ==settled==<Aside text="Only provisionally settled, of course." /> pending further study.
+[aside: See <a href='/blog/some-post/'>this post</a> for more.]
 ```
 
-```
-He arrived carrying cookies[^1]<Aside text="Oreos, obviously." />.
-
-[^1]: Store-bought, no less.
-```
-
-**Links are supported** inside the popover. Because the `text` attribute itself uses double quotes, any `href` must use **single quotes**:
-
-```
-<a href='https://example.com'>link text</a>
-```
-
-Basic inline HTML (`<em>`, `<strong>`, `<a href='...'>`) works. Markdown syntax does not.
-
----
-
-## Raw Markdown Mode
-
-Every body editor has a **Raw** toggle in the toolbar (the `</>` or `{ }` button at the right end of the toolbar). Clicking it switches the rich-text editor to a plain Markdown source view. This is the safe way to add or edit footnotes, highlights, and image attrs while staying inside TinaCMS — as long as you switch back to rich-text and **do not save** after TinaCMS re-parses the content, the custom syntax should survive.
-
-In practice, the safest workflow for content with custom syntax is still VS Code (see the compatibility warning above), but Raw mode is useful for quick fixes.
+Basic inline HTML (`<em>`, `<strong>`, `<a href='...'>`) works inside asides. Markdown syntax does not.
 
 ---
 
 ## Footnote Popups
 
-Clicking a footnote superscript opens a small popup rather than jumping to a footnote list at the bottom of the page. Great for asides, sarcasm, and comedy.
+Clicking a footnote superscript opens a small popup rather than jumping to a footnote list. Great for asides, sarcasm, and comedy.
 
 **Syntax:**
 
-Place a label inline where you want the superscript to appear, then define its content anywhere below (conventionally at the end of the post).
+Place a label inline where you want the superscript, then define its content below (conventionally at the end of the post).
 
 ```
 Cookies[^oreos] are a perfectly acceptable snack.
@@ -148,10 +150,10 @@ Cookies[^oreos] are a perfectly acceptable snack.
 [^oreos]: Everyone knows Oreos are the best cookies.
 ```
 
-- Labels can be words (`[^oreos]`) or numbers (`[^1]`). Words are easier to read in the source.
-- The definition line (`[^label]: content`) is hidden from the published page — it only powers the popup.
+- Labels can be words (`[^oreos]`) or numbers (`[^1]`). Words are easier to read in source.
+- The definition line is hidden from the published page — it only powers the popup.
 - Definitions can contain links, emphasis, etc.
-- Multiple footnotes can appear in the same post; each gets its own numbered superscript in order of appearance.
+- Multiple footnotes in one post each get their own numbered superscript in order of appearance.
 
 ---
 
@@ -171,11 +173,11 @@ Add the caption as the **title attribute** (text in quotes after the path). The 
 ![Alt text](/assets/images/folder/file.jpg "This text appears as a caption.")
 ```
 
-The image must be **on its own paragraph** (blank line above and below) for the caption to render. If the image is embedded mid-sentence, the caption is silently ignored.
+The image must be **on its own paragraph** (blank line above and below) for the caption to render.
 
 ### Layout / size classes
 
-Append `{.class .class}` immediately after the closing `)` of the image (no space before the `{`).
+Append `{.class .class}` immediately after the closing `)` of the image (no space before `{`).
 
 | Class | Effect |
 |---|---|
@@ -196,7 +198,7 @@ Classes can be combined:
 
 ---
 
-## General inline CSS classes
+## General Inline CSS Classes
 
 Any block-level Markdown element can receive CSS classes using `{.classname}` syntax.
 
@@ -220,7 +222,7 @@ This is a highlighted note.
 ## Section Title {.section-special}
 ```
 
-This is powered by the `markdown-it-attrs` plugin.
+Powered by the `markdown-it-attrs` plugin.
 
 ---
 
@@ -231,24 +233,28 @@ This is powered by the `markdown-it-attrs` plugin.
 | Field | Type | Notes |
 |---|---|---|
 | `title` | string | Required |
-| `date` | datetime | Required. Set via TinaCMS date picker. |
-| `time` | string | Optional. `HH:MM` 24-hour format (e.g. `14:30`). Orders multiple posts on the same day. |
-| `image` | image | Featured image. Used as listing thumbnail and post banner. |
-| `hideHeroImage` | boolean | When checked, `image` is used only as the listing thumbnail — not shown at the top of the post. |
-| `excerpt` | textarea | Short summary shown on listing cards. |
+| `permalink` | string | Optional URL override — e.g. `/blog/my-slug/` |
+| `date` | datetime | Required |
+| `time` | string | Optional. `HH:MM` 24-hour. Orders multiple posts on the same day. |
+| `image` | image | Featured image. Listing thumbnail and post banner. |
+| `coverImagePosition` | string | CSS `object-position` for the banner crop |
+| `hideHeroImage` | boolean | Listing thumbnail only — not shown at top of post |
+| `excerpt` | textarea | Short summary shown on listing cards |
 
 ### Adventures (`content/adventures/`)
 
 | Field | Type | Notes |
 |---|---|---|
 | `title` | string | Required |
+| `permalink` | string | Optional URL override |
 | `date` | datetime | Required |
-| `time` | string | Optional. Same ordering use as posts. |
+| `time` | string | Optional. Orders multiple entries on the same day. |
 | `location` | string | City or place name |
 | `country` | string | Country name |
-| `lat` / `lng` | number | Coordinates for the map pin |
+| `lat` / `lng` | number | Coordinates for map pin |
 | `category` | select | `pilgrimage`, `travel`, `retreat`, `parish`, `personal` |
 | `coverImage` | image | Listing thumbnail and post banner |
+| `coverImagePosition` | string | CSS `object-position` for the banner crop |
 | `hideHeroImage` | boolean | Suppresses banner on the detail page |
 
 ### Camino Journal (`content/camino/`)
@@ -256,14 +262,28 @@ This is powered by the `markdown-it-attrs` plugin.
 | Field | Type | Notes |
 |---|---|---|
 | `title` | string | Required |
+| `permalink` | string | Optional URL override — e.g. `/camino/day-01-saint-jean/` |
 | `date` | datetime | Required |
 | `time` | string | Optional. Orders multiple entries on the same day. |
 | `stage` | string | e.g. `Stage 4` |
 | `startLocation` / `endLocation` | string | Shown in listing and post header |
 | `distance` | string | e.g. `22 km` |
-| `lat` / `lng` | number | Coordinates for the map pin |
+| `lat` / `lng` | number | Coordinates for map pin |
 | `coverImage` | image | Listing thumbnail and post banner |
+| `coverImagePosition` | string | CSS `object-position` for the banner crop |
 | `hideHeroImage` | boolean | Suppresses banner on the detail page |
+
+### Galleries (`content/galleries/`)
+
+| Field | Type | Notes |
+|---|---|---|
+| `title` | string | Required |
+| `permalink` | string | Optional URL override |
+| `category` | select | `sacred-art`, `superheroes`, `sci-fi`, `graphic-design`, `inktober`, `illustration`, `other` |
+| `year` | string | e.g. `2023` |
+| `coverImage` | image | Listing thumbnail |
+| `coverImagePosition` | string | CSS `object-position` for the thumbnail crop |
+| `images` | list | Each item has `image` (path) and `caption` (string) |
 
 ### Pages (`content/pages/`)
 
@@ -273,10 +293,23 @@ This is powered by the `markdown-it-attrs` plugin.
 | `slug` | string | URL path segment. Defaults to filename. |
 | `aliases` | string list | Additional slugs that redirect here (e.g. `cv` → `/curriculum-vitae/`) |
 | `coverImage` | image | Page banner image |
+| `coverImagePosition` | string | CSS `object-position` for the banner crop |
 | `hideHeroImage` | boolean | Suppresses banner on the detail page |
 
 ---
 
 ## Time Field Ordering Note
 
-Because TinaCMS's date picker stores all dates as midnight UTC, multiple posts on the same calendar day will appear in an unpredictable order without a `time` field. Set `time` to a 24-hour value like `09:00` or `14:30` to control the sequence. Zero-pad the hour (use `09:00`, not `9:00`) so that alphabetical sorting works correctly.
+The date picker stores all dates as midnight UTC. Multiple posts on the same calendar day will appear in unpredictable order without a `time` field. Set `time` to a 24-hour value like `09:00` or `14:30` to control the sequence. Zero-pad the hour (`09:00`, not `9:00`) so alphabetical sorting works correctly.
+
+---
+
+## Galleries: Local File System Access (Sveltia)
+
+When working locally, Sveltia's media browser reads from the folder you granted access to. Images uploaded via the CMS go to `src/assets/images/`. You can also drop images directly into subfolders (e.g. `src/assets/images/inktober-2025/`) and reference them in the gallery `.md` file manually.
+
+Image paths in front matter always use the **public path** (what the browser sees), not the source path:
+
+```yaml
+coverImage: /assets/images/inktober-2025/01-Mustache.png
+```
