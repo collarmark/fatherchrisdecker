@@ -139,6 +139,10 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 
+.nav__logo { display: block; flex-shrink: 0; }
+.nav__logo-path { fill: #b00a00; }                  /* brand red by default */
+.site-header .nav__logo-path { fill: #ffffff; }     /* white on the dark header */
+
 .nav__links {
   display: flex;
   list-style: none;
