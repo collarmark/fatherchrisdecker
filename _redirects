@@ -3,6 +3,8 @@
 # 301 = permanent (use for renamed slugs after the site is live)
 # 302 = temporary (use when a page is moving but may move again)
 #
-# Example:
-# /camino/old-slug/   /camino/new-slug/   301
+# ── COMING SOON — remove these two lines when ready to launch ──────────────
+/admin/*  /admin/:splat  200
+/*        /coming-soon/  302
+# ──────────────────────────────────────────────────────────────────────────
 
