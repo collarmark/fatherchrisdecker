@@ -327,6 +327,15 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
+.home-hero__cross {
+  width: 56px;
+  height: auto;
+  fill: #ffffff;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
 .home-hero__name {
   font-family: var(--font-heading);
   font-weight: 700;
