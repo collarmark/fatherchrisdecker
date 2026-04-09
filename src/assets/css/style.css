@@ -59,21 +59,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .section { padding-block: 4rem; }
 .section--light { background: #fff; }
-
-.section__header { margin-bottom: 2rem; }
-
-.section__heading {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(1.4rem, 3vw, 1.875rem);
-  color: var(--blue-dark);
-  display: inline-block;
-  padding-bottom: .6rem;
-  border-bottom: 3px solid var(--gold);
-  margin-bottom: 0;
-}
-
-.section__cta { margin-top: 2.5rem; text-align: center; }
 .section__empty { font-style: italic; color: var(--text-muted); }
 
 /* ================================================================
