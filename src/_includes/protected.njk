@@ -23,24 +23,71 @@ layout: base.njk
 </div>
 
 <div id="protected-content" hidden>
-  {{ content | safe }}
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar" aria-label="Document sections">
+      <div class="docs-sidebar__title">{{ title }}</div>
+      <nav class="docs-nav" id="docs-nav" aria-label="Sections"></nav>
+    </aside>
+
+    <div class="docs-content" id="docs-content">
+      {{ content | safe }}
+    </div>
+
+  </div>
 </div>
 
 <script>
   (function () {
-    // Change this password to whatever you like.
     var PASSWORD = 'Leadmeguidem3';
     var STORAGE_KEY = 'unlocked_{{ page.url | replace("/", "_") }}';
+
+    function buildNav() {
+      var content = document.getElementById('docs-content');
+      var nav     = document.getElementById('docs-nav');
+      if (!content || !nav) return;
+
+      var headings = content.querySelectorAll('h2');
+      if (!headings.length) return;
+
+      headings.forEach(function (h, i) {
+        if (!h.id) {
+          h.id = 'sec-' + h.textContent.trim()
+            .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        }
+        var a = document.createElement('a');
+        a.href  = '#' + h.id;
+        a.className = 'docs-nav__link';
+        a.textContent = h.textContent;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById(h.id)
+            .scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', '#' + h.id);
+        });
+        nav.appendChild(a);
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          nav.querySelectorAll('.docs-nav__link--active')
+             .forEach(function (l) { l.classList.remove('docs-nav__link--active'); });
+          var link = nav.querySelector('a[href="#' + entry.target.id + '"]');
+          if (link) link.classList.add('docs-nav__link--active');
+        });
+      }, { rootMargin: '-8% 0px -82% 0px' });
+
+      headings.forEach(function (h) { observer.observe(h); });
+    }
 
     function unlock() {
       document.getElementById('protected-gate').hidden = true;
       document.getElementById('protected-content').hidden = false;
+      buildNav();
     }
 
-    if (sessionStorage.getItem(STORAGE_KEY) === '1') {
-      unlock();
-      return;
-    }
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') { unlock(); return; }
 
     document.getElementById('gate-form').addEventListener('submit', function (e) {
       e.preventDefault();
