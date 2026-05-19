@@ -4,3 +4,7 @@
 # 302 = temporary (use when a page is moving but may move again)
 #
 
+# /faf/ is a branded short alias for Frequently Asked Faith
+/faf/    /frequently-asked-faith/    301
+/faf/*   /frequently-asked-faith/:splat    301
+

@@ -115,6 +115,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("camino", (api) =>
     api.getFilteredByTag("camino").sort(oldestFirst)
   );
+  eleventyConfig.addCollection("faf", (api) =>
+    api.getFilteredByTag("faf").sort(newestFirst)
+  );
   eleventyConfig.addCollection("page", (api) =>
     api.getFilteredByTag("page")
   );

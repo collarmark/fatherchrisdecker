@@ -273,6 +273,20 @@ Powered by the `markdown-it-attrs` plugin.
 | `coverImagePosition` | string | CSS `object-position` for the banner crop |
 | `hideHeroImage` | boolean | Suppresses banner on the detail page |
 
+### Frequently Asked Faith (`content/faf/`)
+
+| Field | Type | Notes |
+|---|---|---|
+| `title` | string | Required. Write it as the question itself — e.g. *"What is the Real Presence?"* |
+| `permalink` | string | Optional URL override — e.g. `/frequently-asked-faith/my-slug/` |
+| `date` | datetime | Required. Used for ordering (newest first). |
+| `category` | string | Optional topic label — e.g. `Sacraments`, `Scripture`, `Morality`, `Prayer`, `Church Teaching`. Displayed as a badge on the listing and entry. Used for future grouping/filtering. |
+| `excerpt` | textarea | Optional. One-sentence summary shown on the listing page and as the page meta description. |
+
+The body is the **answer**. No images are expected, but the full prose toolkit (highlights, footnotes, asides, blockquotes) works normally.
+
+**Short alias:** `/faf/` and `/faf/any-slug/` redirect to the full `/frequently-asked-faith/` URLs via `_redirects`.
+
 ### Galleries (`content/galleries/`)
 
 | Field | Type | Notes |

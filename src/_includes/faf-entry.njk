@@ -1,0 +1,43 @@
+---
+layout: base.njk
+---
+{% block content %}
+
+{% set prevEntry = collections.faf | collectionNext(page.url) %}
+{% set nextEntry = collections.faf | collectionPrev(page.url) %}
+
+<article class="faf-entry container prose">
+
+  <header class="faf-entry__header">
+    <p class="faf-entry__meta">
+      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+      {% if category %}<span class="faf-entry__category">{{ category }}</span>{% endif %}
+    </p>
+    <h1 class="faf-entry__question">{{ title }}</h1>
+    {% if excerpt %}<p class="faf-entry__excerpt">{{ excerpt }}</p>{% endif %}
+  </header>
+
+  <div class="faf-entry__body">
+    {{ content | safe }}
+  </div>
+
+  <nav class="post-nav" aria-label="Frequently Asked Faith navigation">
+    <div class="post-nav__prev">
+      {% if prevEntry %}
+      <span class="post-nav__label">&larr; Previous</span>
+      <a href="{{ prevEntry.url }}" class="post-nav__title">{{ prevEntry.data.title }}</a>
+      {% endif %}
+    </div>
+    <div class="post-nav__back">
+      <a href="/frequently-asked-faith/" class="btn btn--outline btn--sm">Back to Frequently Asked Faith</a>
+    </div>
+    <div class="post-nav__next">
+      {% if nextEntry %}
+      <span class="post-nav__label">Next &rarr;</span>
+      <a href="{{ nextEntry.url }}" class="post-nav__title">{{ nextEntry.data.title }}</a>
+      {% endif %}
+    </div>
+  </nav>
+
+</article>
+{% endblock %}

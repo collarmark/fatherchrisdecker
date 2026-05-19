@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: Frequently Asked Faith
+permalink: /frequently-asked-faith/
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Frequently Asked Faith</h1>
+    <p>My most common theological and catechetical questions &mdash; a living notebook for the curious and the faithful.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <ul class="faf-list" role="list">
+      {% for entry in collections.faf %}
+      <li class="faf-list__item">
+        <a href="{{ entry.url }}" class="faf-list__question">{{ entry.data.title }}</a>
+        <p class="faf-list__meta">
+          <time datetime="{{ entry.date | dateFormat('yyyy-MM-dd') }}">{{ entry.date | dateFormat('MMMM d, yyyy') }}</time>
+          {% if entry.data.category %}<span class="faf-list__category">{{ entry.data.category }}</span>{% endif %}
+        </p>
+        {% if entry.data.excerpt %}<p class="faf-list__excerpt">{{ entry.data.excerpt }}</p>{% endif %}
+      </li>
+      {% else %}
+      <li class="faf-list__item faf-list__item--empty">
+        <p>No entries yet. Check back soon.</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

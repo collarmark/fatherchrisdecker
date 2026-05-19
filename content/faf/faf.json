@@ -1,0 +1,5 @@
+{
+  "layout": "faf-entry.njk",
+  "tags": ["faf"],
+  "permalink": "/frequently-asked-faith/{{ page.fileSlug }}/"
+}

@@ -13,7 +13,7 @@ layout: base.njk
   <div class="post-banner__text">
     <h1 class="post-banner__title">{{ title }}</h1>
     <p class="post-banner__meta">
-      {% if stage %}{{ stage }} &middot; {% endif %}
+      {# {% if stage %}{{ stage }} &middot; {% endif %} #}
       <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
     </p>
   </div>
@@ -25,13 +25,13 @@ layout: base.njk
   <header class="camino-entry__header">
     <p class="camino-entry__meta">
       <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}{% if time %}T{{ time }}{% endif %}">{{ date | dateFormat('MMMM d, yyyy') }}{% if time %} &middot; {{ time }}{% endif %}</time>
-      {% if stage %} &middot; {{ stage }}{% endif %}
+      {# {% if stage %} &middot; {{ stage }}{% endif %} #}
     </p>
     {% if not coverImage or hideHeroImage %}
     <h1 class="camino-entry__title">{{ title }}</h1>
     {% endif %}
 
-    {% if startLocation or endLocation or distance %}
+    {# {% if startLocation or endLocation or distance %}
     <div class="camino-entry__stats">
       {% if startLocation %}
       <span class="stat"><strong>From:</strong> {{ startLocation }}</span>
@@ -43,7 +43,7 @@ layout: base.njk
       <span class="stat"><strong>Distance:</strong> {{ distance }}</span>
       {% endif %}
     </div>
-    {% endif %}
+    {% endif %} #}
   </header>
 
   <div class="camino-entry__body">
