@@ -1,0 +1,59 @@
+---
+layout: base.njk
+---
+{% block content %}
+
+<div id="protected-gate">
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ title }}</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container" style="max-width: 400px;">
+      <form id="gate-form">
+        <label for="gate-password" style="display:block; font-family: var(--font-heading); font-size: .85rem; color: var(--text-muted); margin-bottom: .5rem;">Password required</label>
+        <input type="password" id="gate-password" placeholder="Enter password" autocomplete="current-password"
+          style="width: 100%; padding: .6rem .9rem; font-size: 1rem; border: 1px solid var(--blue-mid); border-radius: var(--radius); margin-bottom: .75rem; box-sizing: border-box;" />
+        <button type="submit" class="btn btn--gold" style="width: 100%;">Enter</button>
+        <p id="gate-error" style="color: #c0392b; margin-top: .6rem; font-size: .875rem; display: none;">Incorrect password.</p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<div id="protected-content" hidden>
+  {{ content | safe }}
+</div>
+
+<script>
+  (function () {
+    // Change this password to whatever you like.
+    var PASSWORD = 'Leadmeguidem3';
+    var STORAGE_KEY = 'unlocked_{{ page.url | replace("/", "_") }}';
+
+    function unlock() {
+      document.getElementById('protected-gate').hidden = true;
+      document.getElementById('protected-content').hidden = false;
+    }
+
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+      unlock();
+      return;
+    }
+
+    document.getElementById('gate-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (document.getElementById('gate-password').value === PASSWORD) {
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        unlock();
+      } else {
+        document.getElementById('gate-error').style.display = 'block';
+        document.getElementById('gate-password').value = '';
+        document.getElementById('gate-password').focus();
+      }
+    });
+  })();
+</script>
+
+{% endblock %}
