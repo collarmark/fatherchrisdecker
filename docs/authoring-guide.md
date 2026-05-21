@@ -280,10 +280,15 @@ Powered by the `markdown-it-attrs` plugin.
 | `title` | string | Required. Write it as the question itself — e.g. *"What is the Real Presence?"* |
 | `permalink` | string | Optional URL override — e.g. `/frequently-asked-faith/my-slug/` |
 | `date` | datetime | Required. Used for ordering (newest first). |
-| `category` | string | Optional topic label — e.g. `Sacraments`, `Scripture`, `Morality`, `Prayer`, `Church Teaching`. Displayed as a badge on the listing and entry. Used for future grouping/filtering. |
+| `time` | string | Optional. `HH:MM` 24-hour. Orders multiple entries on the same day. |
+| `category` | select | Optional topic grouping — `Apologetics`, `Church Teaching`, `History`, `Liturgy`, `Morality`, `Prayer`, `Sacraments`, `Scripture`, `Saints`, `Theology`. Displayed as a badge on the listing and entry. |
+| `tags` | list | Optional keywords for search and filtering — e.g. `Eucharist`, `transubstantiation`, `Real Presence`. |
+| `coverImage` | image | Optional banner image for the entry and listing card. |
+| `coverImagePosition` | string | CSS `object-position` for the banner crop. |
+| `hideHeroImage` | boolean | Suppresses the banner at the top of the entry (thumbnail still shows on listing). |
 | `excerpt` | textarea | Optional. One-sentence summary shown on the listing page and as the page meta description. |
 
-The body is the **answer**. No images are expected, but the full prose toolkit (highlights, footnotes, asides, blockquotes) works normally.
+The body is the **answer**. The full prose toolkit applies — highlights (`==text==`), footnote popups (`[^label]`), aside popovers (`[aside: text]`), image layout classes (`{.float-right}`), and blockquotes all work normally.
 
 **Short alias:** `/faf/` and `/faf/any-slug/` redirect to the full `/frequently-asked-faith/` URLs via `_redirects`.
 

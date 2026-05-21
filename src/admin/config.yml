@@ -140,6 +140,40 @@ collections:
           - { name: caption, label: Caption, widget: string, required: false }
       - { name: body,               label: Body,               widget: markdown }
 
+  # ── FREQUENTLY ASKED FAITH ─────────────────────────────────────────────── #
+  - name: faf
+    label: "Frequently Asked Faith"
+    folder: content/faf
+    extension: md
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,              label: Title,              widget: string,   required: true,
+          hint: "Write it as the question — e.g. \"What is the Real Presence?\"" }
+      - { name: permalink,          label: "URL / Permalink",  widget: string,   required: false,
+          hint: "Override the URL. Use leading and trailing slashes: /frequently-asked-faith/my-slug/ — leave blank to use the filename." }
+      - { name: date,               label: Date,               widget: datetime, required: true, picker_utc: true }
+      - { name: time,               label: Time,               widget: string,   required: false,
+          hint: "Optional. 24-hour HH:MM (e.g. 14:30). Orders multiple entries on the same day." }
+      - name: category
+        label: Category
+        widget: select
+        required: false
+        hint: "Topic grouping — shown as a badge on the listing and entry."
+        options: [Apologetics, "Church Teaching", History, Liturgy, Morality, Prayer, Sacraments, Scripture, Saints, Theology]
+      - name: tags
+        label: Tags
+        widget: list
+        required: false
+        hint: "Keywords for search and filtering — e.g. Eucharist, transubstantiation, Real Presence."
+      - { name: coverImage,         label: "Cover Image",      widget: image,    required: false }
+      - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
+          hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
+      - { name: hideHeroImage,      label: "Hide image at top of entry", widget: boolean, required: false, default: false }
+      - { name: excerpt,            label: Excerpt,            widget: text,     required: false,
+          hint: "One-sentence summary shown on the listing page and as the page meta description." }
+      - { name: body,               label: Body,               widget: markdown }
+
   # ── PAGES ──────────────────────────────────────────────────────────────── #
   - name: pages
     label: Pages
