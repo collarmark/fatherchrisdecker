@@ -7,6 +7,13 @@ category: Sacraments
 coverImage: /assets/images/eucharist-1591663_1280.jpg
 coverImagePosition: ''
 excerpt: The Real Presence is the Catholic doctrine that Jesus Christ is truly, really, and substantially present in the Eucharist — Body, Blood, Soul, and Divinity.
+resources:
+  - type: Document
+    label: Canons of The Council of Trent
+    url: https://www.papalencyclicals.net/councils/trent.htm
+  - type: Scripture
+    label: Mathew 26:26–28; Mark 14:22–24; Luke 22:19–20
+    url: ''
 ---
 
 The **Real Presence** refers to the Catholic teaching that in the Eucharist, Jesus Christ is not present merely in a symbolic or spiritual sense, but _truly, really, and substantially_ — Body, Blood, Soul, and Divinity — under the appearance of bread and wine.
