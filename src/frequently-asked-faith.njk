@@ -13,21 +13,65 @@ permalink: /frequently-asked-faith/
 
 <section class="section">
   <div class="container">
-    <ul class="faf-list" role="list">
+
+    <div class="filter-bar" role="group" aria-label="Filter by category">
+      <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Apologetics">Apologetics</button>
+      <button class="filter-btn" data-filter="Church Teaching">Church Teaching</button>
+      <button class="filter-btn" data-filter="History">History</button>
+      <button class="filter-btn" data-filter="Liturgy">Liturgy</button>
+      <button class="filter-btn" data-filter="Morality">Morality</button>
+      <button class="filter-btn" data-filter="Prayer">Prayer</button>
+      <button class="filter-btn" data-filter="Sacraments">Sacraments</button>
+      <button class="filter-btn" data-filter="Scripture">Scripture</button>
+      <button class="filter-btn" data-filter="Saints">Saints</button>
+      <button class="filter-btn" data-filter="Theology">Theology</button>
+    </div>
+
+    <div class="card-grid" id="faf-grid">
       {% for entry in collections.faf %}
-      <li class="faf-list__item">
-        <a href="{{ entry.url }}" class="faf-list__question">{{ entry.data.title }}</a>
-        <p class="faf-list__meta">
-          <time datetime="{{ entry.date | dateFormat('yyyy-MM-dd') }}">{{ entry.date | dateFormat('MMMM d, yyyy') }}</time>
-          {% if entry.data.category %}<span class="faf-list__category">{{ entry.data.category }}</span>{% endif %}
-        </p>
-        {% if entry.data.excerpt %}<p class="faf-list__excerpt">{{ entry.data.excerpt }}</p>{% endif %}
-      </li>
+      <article class="card faf-card" data-category="{{ entry.data.category }}">
+        <a class="card__img-link{% if not entry.data.coverImage %} faf-card__placeholder{% endif %}" href="{{ entry.url }}" tabindex="-1" aria-hidden="true">
+          {% if entry.data.coverImage %}
+          <img src="{{ entry.data.coverImage }}" alt="" loading="lazy"{% if entry.data.coverImagePosition %} style="object-position: {{ entry.data.coverImagePosition }}"{% endif %} />
+          {% endif %}
+        </a>
+        <div class="card__body">
+          {% if entry.data.category %}
+          <div class="card__meta">
+            <span class="tag tag--{{ entry.data.category | lower | replace(' ', '-') }}">{{ entry.data.category }}</span>
+          </div>
+          {% endif %}
+          <h2 class="card__title faf-card__question">
+            <a href="{{ entry.url }}">{{ entry.data.title }}</a>
+          </h2>
+          {% if entry.data.excerpt %}
+          <p class="card__excerpt">{{ entry.data.excerpt }}</p>
+          {% endif %}
+        </div>
+      </article>
       {% else %}
-      <li class="faf-list__item faf-list__item--empty">
-        <p>No entries yet. Check back soon.</p>
-      </li>
+      <p style="color: var(--text-muted); font-style: italic;">No entries yet. Check back soon.</p>
       {% endfor %}
-    </ul>
+    </div>
+
   </div>
 </section>
+
+{% block scripts %}
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const fafCards   = document.querySelectorAll('#faf-grid .faf-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+      btn.classList.add('filter-btn--active');
+      const filter = btn.dataset.filter;
+      fafCards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+{% endblock %}

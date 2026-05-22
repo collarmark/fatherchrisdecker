@@ -6,38 +6,62 @@ layout: base.njk
 {% set prevEntry = collections.faf | collectionNext(page.url) %}
 {% set nextEntry = collections.faf | collectionPrev(page.url) %}
 
-<article class="faf-entry container prose">
+<div class="faf-entry-layout container">
 
-  <header class="faf-entry__header">
-    <p class="faf-entry__meta">
-      <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
-      {% if category %}<span class="faf-entry__category">{{ category }}</span>{% endif %}
-    </p>
-    <h1 class="faf-entry__question">{{ title }}</h1>
-    {% if excerpt %}<p class="faf-entry__excerpt">{{ excerpt }}</p>{% endif %}
-  </header>
+  <article class="faf-entry prose">
 
-  <div class="faf-entry__body">
-    {{ content | safe }}
-  </div>
+    <header class="faf-entry__header">
+      <p class="faf-entry__meta">
+        <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
+        {% if category %}<span class="faf-entry__category">{{ category }}</span>{% endif %}
+      </p>
+      <h1 class="faf-entry__question">{{ title }}</h1>
+      {% if excerpt %}<p class="faf-entry__excerpt">{{ excerpt }}</p>{% endif %}
+    </header>
 
-  <nav class="post-nav" aria-label="Frequently Asked Faith navigation">
-    <div class="post-nav__prev">
-      {% if prevEntry %}
-      <span class="post-nav__label">&larr; Previous</span>
-      <a href="{{ prevEntry.url }}" class="post-nav__title">{{ prevEntry.data.title }}</a>
-      {% endif %}
+    <div class="faf-entry__body">
+      {{ content | safe }}
     </div>
-    <div class="post-nav__back">
-      <a href="/frequently-asked-faith/" class="btn btn--outline btn--sm">Back to Frequently Asked Faith</a>
-    </div>
-    <div class="post-nav__next">
-      {% if nextEntry %}
-      <span class="post-nav__label">Next &rarr;</span>
-      <a href="{{ nextEntry.url }}" class="post-nav__title">{{ nextEntry.data.title }}</a>
-      {% endif %}
-    </div>
-  </nav>
 
-</article>
+    <nav class="post-nav" aria-label="Frequently Asked Faith navigation">
+      <div class="post-nav__prev">
+        {% if prevEntry %}
+        <span class="post-nav__label">&larr; Previous</span>
+        <a href="{{ prevEntry.url }}" class="post-nav__title">{{ prevEntry.data.title }}</a>
+        {% endif %}
+      </div>
+      <div class="post-nav__back">
+        <a href="/frequently-asked-faith/" class="btn btn--outline btn--sm">Back to Frequently Asked Faith</a>
+      </div>
+      <div class="post-nav__next">
+        {% if nextEntry %}
+        <span class="post-nav__label">Next &rarr;</span>
+        <a href="{{ nextEntry.url }}" class="post-nav__title">{{ nextEntry.data.title }}</a>
+        {% endif %}
+      </div>
+    </nav>
+
+  </article>
+
+  {% if resources and resources.length %}
+  <aside class="faf-sidebar" aria-label="Useful Resources">
+    <p class="faf-sidebar__title">Useful Resources</p>
+    <ul class="faf-sidebar__list" role="list">
+      {% for item in resources %}
+      <li class="faf-sidebar__item">
+        <span class="faf-sidebar__type faf-sidebar__type--{{ item.type | lower }}">{{ item.type }}</span>
+        <span class="faf-sidebar__label">
+          {% if item.url %}
+          <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.label }}</a>
+          {% else %}
+          {{ item.label }}
+          {% endif %}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+
+</div>
 {% endblock %}

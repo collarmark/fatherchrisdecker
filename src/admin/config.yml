@@ -181,6 +181,21 @@ collections:
       - { name: hideHeroImage,      label: "Hide image at top of entry", widget: boolean, required: false, default: false }
       - { name: excerpt,            label: Excerpt,            widget: text,     required: false,
           hint: "One-sentence summary shown on the listing page and as the page meta description." }
+      - name: resources
+        label: "Useful Resources"
+        widget: list
+        required: false
+        hint: "Catechism paragraphs, Scripture passages, and external links shown in the sidebar."
+        fields:
+          - name: type
+            label: Type
+            widget: select
+            required: true
+            options: [Catechism, Scripture, Website, Book, Document]
+          - { name: label, label: Label,  widget: string, required: true,
+              hint: "e.g. CCC 1374–1379  ·  John 6:51–58  ·  Catholic Answers: Real Presence" }
+          - { name: url,   label: URL,    widget: string, required: false,
+              hint: "Full URL including https://  — leave blank for references without a specific link." }
       - { name: body,               label: Body,               widget: markdown }
 
   # ── PAGES ──────────────────────────────────────────────────────────────── #
