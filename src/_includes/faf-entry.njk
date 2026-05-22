@@ -6,6 +6,19 @@ layout: base.njk
 {% set prevEntry = collections.faf | collectionNext(page.url) %}
 {% set nextEntry = collections.faf | collectionPrev(page.url) %}
 
+{% if coverImage and not hideHeroImage %}
+<div class="post-banner">
+  <img class="post-banner__img" src="{{ coverImage }}" alt="{{ title }}" loading="eager"{% if coverImagePosition %} style="object-position: {{ coverImagePosition }}"{% endif %} />
+  <div class="post-banner__overlay"></div>
+  <div class="post-banner__text">
+    <h1 class="post-banner__title">{{ title }}</h1>
+    <p class="post-banner__meta">
+      {% if category %}<span class="tag tag--{{ category | lower | replace(' ', '-') }}">{{ category }}</span>{% endif %}
+    </p>
+  </div>
+</div>
+{% endif %}
+
 <div class="faf-entry-layout container">
 
   <article class="faf-entry prose">
@@ -15,7 +28,9 @@ layout: base.njk
         <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
         {% if category %}<span class="faf-entry__category">{{ category }}</span>{% endif %}
       </p>
+      {% if not coverImage or hideHeroImage %}
       <h1 class="faf-entry__question">{{ title }}</h1>
+      {% endif %}
       {% if excerpt %}<p class="faf-entry__excerpt">{{ excerpt }}</p>{% endif %}
     </header>
 
