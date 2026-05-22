@@ -15,7 +15,7 @@ resources:
     label: Canons of The Council of Trent
     url: https://www.papalencyclicals.net/councils/trent.htm
   - type: Catechism
-    label: Catechism of the Catholic Church, 1377
+    label: '1377'
     url: https://canonlaw.ninja/?v=ccc&nums=1377
 ---
 
