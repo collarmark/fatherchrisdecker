@@ -1,9 +1,16 @@
 ---
 title: Carrión y Terradillos or “At Least the Templars Had Horses”
+permalink: ''
 date: 2018-08-23T00:00:00.000Z
+time: ''
+stage: Stage 12
 startLocation: Carrión de los Condes
 endLocation: Bercianos del Real Camino
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-carrionterridillos-01.webp
+coverImagePosition: ''
 ---
 
 ![](/assets/images/2018-Camino/2018-camino-carrionterridillos-01.webp){.float-right}
