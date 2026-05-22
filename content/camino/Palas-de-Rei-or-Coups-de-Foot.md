@@ -1,6 +1,14 @@
 ---
 title: Palas de Rei or “Coups de Foot”
+permalink: ''
 date: 2018-08-31T00:00:00.000Z
+time: ''
+stage: Stage 16
+startLocation: ''
+endLocation: ''
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-pallaisderey-01.webp
 coverImagePosition: center top
 ---
