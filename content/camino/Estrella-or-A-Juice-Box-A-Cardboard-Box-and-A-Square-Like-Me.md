@@ -1,10 +1,16 @@
 ---
-title: 'Estrella or “A Juice Box, A Cardboard Box, and A Square Like Me.”'
+title: Estrella or “A Juice Box, A Cardboard Box, and A Square Like Me.”
+permalink: ''
 date: 2018-08-13T00:00:00.000Z
-stage: ''
+time: ''
+stage: Stage 4
 startLocation: Puente la Reina
 endLocation: Estrella
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-estrella-02.webp
+coverImagePosition: ''
 ---
 
 ![](/assets/images/2018-Camino/2018-camino-estrella-01.webp)​{.img-medium .float-right}
