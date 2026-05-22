@@ -4,7 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} | {% endif %}Father Chris Decker</title>
-  <meta name="description" content="{% if excerpt %}{{ excerpt }}{% else %}The personal site of Father Chris Decker – priest, pilgrim, and artist.{% endif %}" />
+  <meta name="description" content="{% if excerpt %}{{ excerpt }}{% else %}{{ site.description }}{% endif %}" />
+
+  <!-- Open Graph / iMessage / social previews -->
+  {% set ogTitle = title + " | Father Chris Decker" if title else site.name %}
+  {% set ogDesc  = excerpt if excerpt else site.description %}
+  {% set ogImg   = image or coverImage %}
+  {% set ogImgUrl = (site.url + ogImg) if ogImg else (site.url + site.defaultImage) %}
+  <meta property="og:type"        content="{% if tags and ('post' in tags or 'adventure' in tags or 'camino' in tags or 'faf' in tags) %}article{% else %}website{% endif %}" />
+  <meta property="og:site_name"   content="{{ site.name }}" />
+  <meta property="og:url"         content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:title"       content="{{ ogTitle }}" />
+  <meta property="og:description" content="{{ ogDesc }}" />
+  <meta property="og:image"       content="{{ ogImgUrl }}" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:title"      content="{{ ogTitle }}" />
+  <meta name="twitter:description" content="{{ ogDesc }}" />
+  <meta name="twitter:image"      content="{{ ogImgUrl }}" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
