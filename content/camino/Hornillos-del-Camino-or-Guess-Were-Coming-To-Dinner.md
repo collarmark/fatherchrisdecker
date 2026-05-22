@@ -1,9 +1,16 @@
 ---
 title: Hornillos del Camino or “Guess We’re Coming To Dinner”
+permalink: ''
 date: 2018-08-19T00:00:00.000Z
+time: ''
+stage: Stage 9
 startLocation: Hornillos del Camino
 endLocation: Castrojeriz
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-hornillos-01.webp
+coverImagePosition: ''
 ---
 
 After Mass in the hotel room this morning around 6am, Fr. Ryan and I strapped on our packs and began our journey *en pied* once more, taking us by way of the cathedral of Burgos and straight out of the back of the city. It’s really something to literally walk from one end of the town to the other. The road just ends and the Camino arrows give way to the ubiquitous shell and *flechas amarillias*, the yellow arrows that become a kind of locator beacon for the pilgrim.
