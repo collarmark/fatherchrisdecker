@@ -1,8 +1,16 @@
 ---
-title: 'Arzúa & O Pedrouzo or “Those Crosses Aren’t Just For Show, Kid”'
+title: Arzúa & O Pedrouzo or “Those Crosses Aren’t Just For Show, Kid”
+permalink: ''
 date: 2018-09-02T00:00:00.000Z
+time: ''
+stage: Stage 17
+startLocation: ''
 endLocation: Arzúa & O Pedrouzo
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-aruza-01.webp
+coverImagePosition: ''
 ---
 
 Yesterday, I was feeling frisky of foot (possibly to attempt to put them in their place?) so I set out from Palas de Rei intending to find a spot to alight in Ribadiso de Baixo, the second to last stage on the Camino. But, (and I didn’t tell my feet this) I walked on, with ever-increasing hobble, to Arzúa, which is about 3 kilometers past Ribadiso. This made for a shorter day today, but my feet have produced a few more hotspots despite my best efforts to keep them dry and friction-free. Ah, well. I could have guessed I wouldn’t escape The Camino with glistening feet —heaven knows that the pilgrims of yore didn’t have multi-layered-vibra-shock-double-dismount-toe-pivot-push-away cushioning. I don’t know what I’m complaining about!
