@@ -151,6 +151,14 @@ module.exports = function (eleventyConfig) {
   // Limit a collection to N items
   eleventyConfig.addFilter("limit", (arr, n) => arr.slice(0, n));
 
+  // Return blog posts tagged with a given adventure slug, oldest-first
+  eleventyConfig.addFilter("whereAdventureTag", (posts, tag) => {
+    if (!tag || !posts) return [];
+    return posts
+      .filter(p => p.data.adventureTag === tag)
+      .sort((a, b) => a.date - b.date);
+  });
+
   return {
     templateFormats: ["njk", "md", "html"],
     markdownTemplateEngine: "njk",

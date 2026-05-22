@@ -37,6 +37,45 @@ layout: base.njk
     {{ content | safe }}
   </div>
 
+</article>
+
+{% if postTag %}
+{% set linkedPosts = collections.post | whereAdventureTag(postTag) %}
+{% if linkedPosts and linkedPosts.length %}
+<section class="adv-posts-section">
+  <div class="container">
+    <p class="adv-posts-section__heading">From the Blog</p>
+    <ol class="camino-timeline">
+      {% for post in linkedPosts %}
+      <li class="camino-tl-item">
+        <div class="camino-tl-item__thread" aria-hidden="true">
+          <span class="camino-tl-item__dot"></span>
+        </div>
+        <a href="{{ post.url }}" class="camino-tl-item__thumb" tabindex="-1" aria-hidden="true">
+          {% if post.data.image %}
+          <img src="{{ post.data.image }}" alt="" loading="lazy" />
+          {% else %}
+          <div class="camino-tl-item__thumb--placeholder"></div>
+          {% endif %}
+        </a>
+        <div class="camino-tl-item__content">
+          <span class="camino-tl-item__stage">{{ post.date | dateFormat('MMMM d, yyyy') }}</span>
+          <h2 class="camino-tl-item__title">
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </h2>
+          {% if post.data.excerpt %}
+          <p class="camino-tl-item__meta">{{ post.data.excerpt }}</p>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endif %}
+{% endif %}
+
+<div class="container">
   <nav class="post-nav" aria-label="Adventure navigation">
     <div class="post-nav__prev">
       {% if prevAdventure %}
@@ -54,6 +93,6 @@ layout: base.njk
       {% endif %}
     </div>
   </nav>
+</div>
 
-</article>
 {% endblock %}

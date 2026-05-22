@@ -47,6 +47,8 @@ collections:
       - { name: coverImagePosition, label: "Image focal point", widget: string,  required: false,
           hint: "CSS object-position — top · center · bottom · left · right · or e.g. 50% 25%" }
       - { name: hideHeroImage,      label: "Hide image at top of post", widget: boolean, required: false, default: false }
+      - { name: adventureTag,       label: "Adventure Tag",    widget: string,   required: false,
+          hint: "Slug of the Adventure this post belongs to (e.g. italy-2025). Must match the 'Blog Post Tag' on the adventure entry." }
       - { name: excerpt,            label: Excerpt,            widget: text,     required: false }
       - { name: body,               label: Body,               widget: markdown }
 
@@ -64,6 +66,8 @@ collections:
       - { name: date,               label: Date,               widget: datetime, required: true, picker_utc: true }
       - { name: time,               label: Time,               widget: string,   required: false,
           hint: "Optional. 24-hour HH:MM (e.g. 14:30). Orders multiple entries on the same day." }
+      - { name: postTag,            label: "Blog Post Tag",    widget: string,   required: false,
+          hint: "Unique slug for this adventure (e.g. italy-2025). Set the same value as 'Adventure Tag' on any blog posts to link them here as a travel log." }
       - { name: location,           label: Location,           widget: string,   required: false,
           hint: "Primary display location shown on the card (e.g. Rome)." }
       - { name: country,            label: Country,            widget: string,   required: false }

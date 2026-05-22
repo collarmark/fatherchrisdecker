@@ -239,6 +239,7 @@ Powered by the `markdown-it-attrs` plugin.
 | `image` | image | Featured image. Listing thumbnail and post banner. |
 | `coverImagePosition` | string | CSS `object-position` for the banner crop |
 | `hideHeroImage` | boolean | Listing thumbnail only — not shown at top of post |
+| `adventureTag` | string | Slug of the Adventure this post belongs to (e.g. `italy-2025`). Must match the `postTag` on the adventure entry. See [Linking Blog Posts to an Adventure](#linking-blog-posts-to-an-adventure). |
 | `excerpt` | textarea | Short summary shown on listing cards |
 
 ### Adventures (`content/adventures/`)
@@ -249,9 +250,10 @@ Powered by the `markdown-it-attrs` plugin.
 | `permalink` | string | Optional URL override |
 | `date` | datetime | Required |
 | `time` | string | Optional. Orders multiple entries on the same day. |
-| `location` | string | City or place name |
+| `postTag` | string | Unique slug (e.g. `italy-2025`) — links blog posts to this adventure as a travel log. See [Linking Blog Posts to an Adventure](#linking-blog-posts-to-an-adventure). |
+| `location` | string | Primary display location shown on the card (e.g. `Rome`) |
 | `country` | string | Country name |
-| `lat` / `lng` | number | Coordinates for map pin |
+| `locations` | list | Map pins. Each item has `name` (popup label), `lat`, and `lng`. Add multiple for multi-city trips — all pins appear on the map. |
 | `category` | select | `pilgrimage`, `travel`, `retreat`, `parish`, `personal` |
 | `coverImage` | image | Listing thumbnail and post banner |
 | `coverImagePosition` | string | CSS `object-position` for the banner crop |
@@ -287,6 +289,7 @@ Powered by the `markdown-it-attrs` plugin.
 | `coverImagePosition` | string | CSS `object-position` for the banner crop. |
 | `hideHeroImage` | boolean | Suppresses the banner at the top of the entry (thumbnail still shows on listing). |
 | `excerpt` | textarea | Optional. One-sentence summary shown on the listing page and as the page meta description. |
+| `resources` | list | Optional sidebar of reference links. Each item has `type` (`Catechism`, `Scripture`, `Website`, `Book`, `Document`), `label` (display text), and `url` (optional link). Reorder by dragging the handle. |
 
 The body is the **answer**. The full prose toolkit applies — highlights (`==text==`), footnote popups (`[^label]`), aside popovers (`[aside: text]`), image layout classes (`{.float-right}`), and blockquotes all work normally.
 
@@ -314,6 +317,39 @@ The body is the **answer**. The full prose toolkit applies — highlights (`==te
 | `coverImage` | image | Page banner image |
 | `coverImagePosition` | string | CSS `object-position` for the banner crop |
 | `hideHeroImage` | boolean | Suppresses banner on the detail page |
+
+---
+
+## Linking Blog Posts to an Adventure
+
+Adventures can display a chronological "From the Blog" travel log — the same dark-panel timeline style as the Camino journal — pulled automatically from matching blog posts.
+
+### Step 1 — Set a tag on the Adventure
+
+Open the Adventure entry in Sveltia and fill in the **Blog Post Tag** field with a unique, lowercase slug. Use something descriptive and year-specific so it won't collide with other adventures.
+
+```
+italy-2025
+france-normandy-2024
+camino-primitivo-2026
+```
+
+### Step 2 — Tag each related Blog Post
+
+Open each blog post that belongs to this adventure and set its **Adventure Tag** field to the **exact same slug**.
+
+```
+italy-2025
+```
+
+That's it. At next build, the adventure entry page will show all matching posts below the body text, sorted oldest to newest.
+
+### Notes
+
+- A post can only belong to one adventure (one `adventureTag` value).
+- If the adventure has no `postTag` set, the timeline section simply does not appear.
+- A single linked post displays the same way as multiple — no special handling needed.
+- The slug is case-sensitive. `Italy-2025` and `italy-2025` will not match.
 
 ---
 
