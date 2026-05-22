@@ -33,7 +33,7 @@ Tomorrow looks to be a tough day, but there’s a wine fountain. You heard me.
 
 ![](/assets/images/2018-Camino/2018-camino-estrella-03.webp)
 
-> Psalm 84
+> **Psalm 84**
 > How lovely is your dwelling place, \*
 > Lord, God of hosts.
 > My soul is longing and yearning, \*
