@@ -1,6 +1,14 @@
 ---
-title: 'Sarria & Portomarín or “The Roads are Paved with ... Wait, Is That...?”'
+title: Sarria & Portomarín or “The Roads are Paved with ... Wait, Is That...?”
+permalink: ''
 date: 2018-08-30T00:00:00.000Z
+time: ''
+stage: Stage 15
+startLocation: ''
+endLocation: ''
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-sarria-01.webp
 coverImagePosition: center
 hideHeroImage: true
