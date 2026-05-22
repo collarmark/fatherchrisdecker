@@ -1,9 +1,16 @@
 ---
 title: Frómista or “Que(so)?”
+permalink: ''
 date: 2018-08-21T00:00:00.000Z
+time: ''
+stage: Stage 11
 startLocation: Frómista
 endLocation: Carrión de los Condes
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-fromista-01.webp
+coverImagePosition: ''
 ---
 
 On any given day in Baton Rouge, I usually find myself speaking English. Occasionally I get to make use of French and Spanish, with a smattering of Ecclesiastical Latin, but for the most part it’s the language I speak in, think in, and probably even gesture in.
