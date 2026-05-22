@@ -1,9 +1,16 @@
 ---
-title: 'Santiago de Compostela or “It’s Just a Rest Stop, Really.”'
+title: Santiago de Compostela or “It’s Just a Rest Stop, Really.”
+permalink: ''
 date: 2018-09-05T00:00:00.000Z
+time: ''
+stage: Stage 19
 startLocation: Arzúa & O Pedrouzo
 endLocation: Santiago deCompostella
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-santiago-01.webp
+coverImagePosition: ''
 images:
   - image: /assets/images/2018-Camino/2018-camino-santiago-01.webp
   - image: /assets/images/2018-Camino/2018-camino-santiago-02.jpeg
