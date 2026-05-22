@@ -3,6 +3,7 @@ title: Italy with Catholic of Pointe Coupee
 permalink: ''
 date: 2026-05-25T10:00:00.000Z
 time: ''
+postTag: italy-cpc-2026
 location: Rome
 country: Italy
 locations:
