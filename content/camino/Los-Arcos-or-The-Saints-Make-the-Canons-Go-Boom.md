@@ -1,9 +1,16 @@
 ---
 title: Los Arcos or “The Saints Make the Canons Go Boom.”
+permalink: ''
 date: 2018-08-14T00:00:00.000Z
+time: ''
+stage: Stage 5
 startLocation: Estrella
 endLocation: Los Arcos
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-los-arcos-01.jpeg
+coverImagePosition: ''
 ---
 
 We arrived in Los Arcos about noon to the sound of explosions. Of course we were warned along the way that something like this would happen.
