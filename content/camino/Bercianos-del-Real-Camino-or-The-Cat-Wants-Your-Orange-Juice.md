@@ -1,9 +1,16 @@
 ---
 title: Bercianos del Real Camino or “The Cat Wants Your Orange Juice”
+permalink: ''
 date: 2018-08-24T00:00:00.000Z
+time: ''
+stage: Stage 13
 startLocation: Bercianos del Real Camino
 endLocation: Terradillos de los Templarios
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-bercianos-01.webp
+coverImagePosition: ''
 ---
 
 The walk from Terradillos de los Templarios was one of the longer stretches, as will tomorrow’s stretch from Bercianos del Real Camino to Mansilla de las Mulas. (So many looooooong names that don’t exactly roll of the tongue.  It would be like saying Baton Rouge of the French Where the River Runs Through.)
