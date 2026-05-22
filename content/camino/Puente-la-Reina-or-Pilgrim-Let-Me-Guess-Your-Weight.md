@@ -3,7 +3,7 @@ title: Puente la Reina or “Pilgrim, Let Me Guess Your Weight.”
 permalink: ''
 date: 2018-08-12T00:00:00.000Z
 time: 19:00
-stage: Stage 1
+stage: Stage 3
 startLocation: Alto de Perdon
 endLocation: Puente la Reina
 lat: null
