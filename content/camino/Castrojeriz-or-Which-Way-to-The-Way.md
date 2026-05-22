@@ -1,10 +1,16 @@
 ---
 title: Castrojeriz or “Which Way to The Way?”
+permalink: ''
 date: 2018-08-20T00:00:00.000Z
 time: ''
+stage: Stage 10
 startLocation: Castrojeriz
 endLocation: Frómista
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-castrojeriz-01.webp
+coverImagePosition: ''
 ---
 
 I can’t put one past you, can I? You rightly intuited that there was more to yesterday’s chat with the retired German aircraft engineer than meets the eye. Before he strolled over and sat down, Fr. Ryan and I were in solemn conclave about the what would be “next” for him and me. Here’s the rest of that story:
