@@ -24,4 +24,4 @@ coverImagePosition: ''
 hideHeroImage: false
 ---
 
-Fr. Chris and the Catholic of Pointe Coupee Families hiked through Italy.
+Fr. Chris and the Catholic of Pointe Coupee Families hike, bike, and raft through Italy.
