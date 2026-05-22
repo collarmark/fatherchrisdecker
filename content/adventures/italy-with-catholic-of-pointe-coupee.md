@@ -19,7 +19,7 @@ locations:
     lat: 42.745334
     lng: 12.73843
 category: pilgrimage
-coverImage: ''
+coverImage: /assets/images/CPC-Italy.jpg
 coverImagePosition: ''
 hideHeroImage: false
 ---
