@@ -1,8 +1,14 @@
 ---
 title: This Camino Isn’t Just “Mine.” It’s Ours More Than Ever.
+permalink: ''
 date: 2018-08-18T00:00:00.000Z
+time: ''
+stage: Stage 8
 startLocation: Burgos
 endLocation: Hornillos de Camino
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-burgos-02.webp
 coverImagePosition: top center
 ---
