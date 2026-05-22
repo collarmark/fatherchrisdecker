@@ -1,10 +1,16 @@
 ---
 title: Burgos or “Where We’re Going We Don’t Need Roads”
+permalink: ''
 date: 2018-08-16T00:00:00.000Z
-stage: ''
+time: ''
+stage: Stage 7
 startLocation: Logroño
 endLocation: Burgos
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-burgos-01.webp
+coverImagePosition: ''
 ---
 
 ![a coffee and train ticket](/assets/images/2018-Camino/2018-camino-burgos-01.webp "A coffee and a train ticket soothe the savage feet."){.float-right}Good day (evening for us!) from Burgos!
