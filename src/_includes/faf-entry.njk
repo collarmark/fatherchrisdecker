@@ -26,7 +26,6 @@ layout: base.njk
     <header class="faf-entry__header">
       <p class="faf-entry__meta">
         <time datetime="{{ date | dateFormat('yyyy-MM-dd') }}">{{ date | dateFormat('MMMM d, yyyy') }}</time>
-        {% if category %}<span class="faf-entry__category">{{ category }}</span>{% endif %}
       </p>
       {% if not coverImage or hideHeroImage %}
       <h1 class="faf-entry__question">{{ title }}</h1>
