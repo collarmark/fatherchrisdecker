@@ -64,10 +64,19 @@ collections:
       - { name: date,               label: Date,               widget: datetime, required: true, picker_utc: true }
       - { name: time,               label: Time,               widget: string,   required: false,
           hint: "Optional. 24-hour HH:MM (e.g. 14:30). Orders multiple entries on the same day." }
-      - { name: location,           label: Location,           widget: string,   required: false }
+      - { name: location,           label: Location,           widget: string,   required: false,
+          hint: "Primary display location shown on the card (e.g. Rome)." }
       - { name: country,            label: Country,            widget: string,   required: false }
-      - { name: lat,                label: Latitude,           widget: number,   required: false, value_type: float }
-      - { name: lng,                label: Longitude,          widget: number,   required: false, value_type: float }
+      - name: locations
+        label: "Map Pins"
+        widget: list
+        required: false
+        hint: "Add one pin per city/stop — all will appear on the map. One entry is fine; add more for multi-city trips."
+        fields:
+          - { name: name,  label: "Place name",  widget: string, required: true,
+              hint: "Shown in the map popup (e.g. Rome, Italy)." }
+          - { name: lat,   label: Latitude,      widget: number, required: true,  value_type: float }
+          - { name: lng,   label: Longitude,     widget: number, required: true,  value_type: float }
       - name: category
         label: Category
         widget: select

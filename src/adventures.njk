@@ -80,28 +80,35 @@ permalink: /adventures/
   // Adventure data serialised from Eleventy collections
   const adventures = [
     {% for adv in collections.adventure %}
-    {% if adv.data.lat and adv.data.lng %}
+    {% if adv.data.locations and adv.data.locations.length %}
     {
       title: {{ adv.data.title | json | safe }},
       url: {{ adv.url | json | safe }},
-      location: {{ (adv.data.location or '') | json | safe }},
       date: {{ adv.date | dateFormat('MMMM d, yyyy') | json | safe }},
-      lat: {{ adv.data.lat }},
-      lng: {{ adv.data.lng }}
-    }{% if not loop.last %},{% endif %}
+      locations: {{ adv.data.locations | json | safe }}
+    },
+    {% elif adv.data.lat and adv.data.lng %}
+    {
+      title: {{ adv.data.title | json | safe }},
+      url: {{ adv.url | json | safe }},
+      date: {{ adv.date | dateFormat('MMMM d, yyyy') | json | safe }},
+      locations: [{ name: {{ (adv.data.location or '') | json | safe }}, lat: {{ adv.data.lat }}, lng: {{ adv.data.lng }} }]
+    },
     {% endif %}
     {% endfor %}
   ];
 
   adventures.forEach(adv => {
-    L.marker([adv.lat, adv.lng], { icon: pinIcon })
-      .addTo(map)
-      .bindPopup(`
-        <strong>${adv.title}</strong><br/>
-        ${adv.date}<br/>
-        ${adv.location}<br/>
-        <a href="${adv.url}">Read more &rarr;</a>
-      `);
+    adv.locations.forEach(loc => {
+      L.marker([loc.lat, loc.lng], { icon: pinIcon })
+        .addTo(map)
+        .bindPopup(`
+          <strong>${adv.title}</strong><br/>
+          ${loc.name ? loc.name + '<br/>' : ''}
+          ${adv.date}<br/>
+          <a href="${adv.url}">Read more &rarr;</a>
+        `);
+    });
   });
 
   // ---- Category filter ----
