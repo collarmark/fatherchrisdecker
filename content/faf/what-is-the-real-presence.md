@@ -14,6 +14,9 @@ resources:
   - type: Document
     label: Canons of The Council of Trent
     url: https://www.papalencyclicals.net/councils/trent.htm
+  - type: Catechism
+    label: Catechism of the Catholic Church, 1377
+    url: https://canonlaw.ninja/?v=ccc&nums=1377
 ---
 
 The **Real Presence** refers to the Catholic teaching that in the Eucharist, Jesus Christ is not present merely in a symbolic or spiritual sense, but _truly, really, and substantially_ — Body, Blood, Soul, and Divinity — under the appearance of bread and wine.
