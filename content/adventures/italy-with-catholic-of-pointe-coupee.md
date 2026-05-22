@@ -20,7 +20,7 @@ locations:
     lng: 12.73843
 category: pilgrimage
 coverImage: /assets/images/CPC-Italy.jpg
-coverImagePosition: ''
+coverImagePosition: center
 hideHeroImage: false
 ---
 
