@@ -1,9 +1,16 @@
 ---
 title: Logroño or “The Agony of Your Feet”
+permalink: ''
 date: 2018-08-15T00:00:00.000Z
+time: ''
+stage: Stage 6
 startLocation: Los Arcos
 endLocation: Logroño
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-logrono-01.webp
+coverImagePosition: ''
 ---
 
 ![](/assets/images/2018-Camino/2018-camino-logrono-01.webp "The increasingly not-so-rare ✖️ instead of an ⬆️ on the Camino"){.img-medium .float-right}
