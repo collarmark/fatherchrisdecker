@@ -1,7 +1,14 @@
 ---
 title: Mansilla de las Mulas or “The Full Camino”
+permalink: ''
 date: 2018-08-27T00:00:00.000Z
+time: ''
+stage: Stage 14
+startLocation: ''
 endLocation: Mansilla de las Mulas
+lat: null
+lng: null
+distance: ''
 coverImage: /assets/images/2018-Camino/2018-camino-mansanilla-01.webp
 coverImagePosition: center
 ---
