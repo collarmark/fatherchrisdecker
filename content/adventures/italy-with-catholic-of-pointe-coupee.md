@@ -19,6 +19,9 @@ locations:
   - name: Spoleto
     lat: 42.745334
     lng: 12.73843
+  - name: Assisi, Italy
+    lat: 43.070702
+    lng: 12.619597
 category: pilgrimage
 coverImage: /assets/images/CPC-Italy.jpg
 coverImagePosition: center
