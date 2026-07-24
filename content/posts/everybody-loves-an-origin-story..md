@@ -3,7 +3,7 @@ title: Everybody loves an origin story.
 permalink: ''
 date: 2024-07-05T17:55:00Z
 time: ''
-image: ''
+image: /assets/images/don-rosas-art.jpg
 coverImagePosition: ''
 hideHeroImage: false
 adventureTag: ''
