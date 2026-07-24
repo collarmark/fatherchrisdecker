@@ -22,7 +22,7 @@ Greetings! If you’re new to the newsletter and wondering why there hasn’t be
 
 I’m Fr. Chris Decker, a priest of the Catholic Diocese of Baton Rouge, Louisiana, in the United States of America. I am the pastor of a parish in a beautiful, small city called New Roads. It’s situated between the Mississippi River and an oxbow lake created from one of the great river’s course changes over the years. The lake is rather directly called ”False River”and has been the site that many people of faith and deep-rooted culture call home. I also provide administrative and pastoral care to a pre-Kindergarten through twelfth grade school attached to our parish. I really love being assigned as the priest here and am proud to call it home for the time that God has allows me to minister.
 
-If you’ve ever been to Louisiana, you know that it’s got a particularly deep root system weaves food, faith, and family connections. A friend of mine has described Louisiana as “a dominion” meaning that in a bygone age, it could have been a great city-state (like a mini-country) unto itself because the culture is so diverse, yet united with strong family, cuisine, and custom. I’m inclined to agree! Despite all the struggles that people with varied backgrounds occupying the same places may have, there is far more that unites our state than should be allowed to divide it. It’s into that rich seedbed that I’ve been planted and has shaped my entire life.
+If you’ve ever been to Louisiana, you know that it’s got a particularly deep root system that interweaves food, faith, and family connections. A friend of mine has described Louisiana as “a dominion” meaning that in a bygone age, it could have been a great city-state (like a mini-country) unto itself because the culture is so diverse, yet united with strong family, cuisine, and custom. I’m inclined to agree! Despite all the struggles that people with varied backgrounds occupying the same places may have, there is far more that unites our state than should be allowed to divide it. It’s into that rich seedbed that I’ve been planted and has shaped my entire life.
 
 So, that’s a brief introduction to the present day; enough about that for now! Since the purpose of my blog is to share my artwork, my reflections on faith and life, and how it might be helpful for you, intrepid reader, I thought I’d head down memory lane to look at how my love of religious art and my own style developed.
 
@@ -32,9 +32,9 @@ I’ve loved drawing from a very young age. My parents always made sure that art
 
 As a youngling, I loved drawing airplanes (I somehow skipped over the dinosaur phase.) since my father worked for the airlines in customer service. When kids my age were attempting to draw fighter jets shooting each other down, I was mesmerized by the Boeing 767.
 
-[![](https://substackcdn.com/image/fetch/$s_!x-uh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ec0ec62-0706-4444-b697-e23c40b2cc81_734x262.jpeg)](https://substackcdn.com/image/fetch/$s_!x-uh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ec0ec62-0706-4444-b697-e23c40b2cc81_734x262.jpeg)
+[![Mike Machat’s 767. Look at that precision and those clean lines!](https://substackcdn.com/image/fetch/$s_!x-uh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ec0ec62-0706-4444-b697-e23c40b2cc81_734x262.jpeg "Mike Machat’s 767. Look at that precision and those clean lines!")](https://substackcdn.com/image/fetch/$s_!x-uh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3ec0ec62-0706-4444-b697-e23c40b2cc81_734x262.jpeg)
 
-Mike Machat’s 767. Look at that precision and those clean lines!
+_Mike Machat’s 767. Look at that precision and those clean lines!_
 
 Spending many days running around an airport (well before the TSA existed) gave me a lot to draw and fueled my imagination. In terms of influences, the nineties proved to be very influential! I was around 10 years old when my dad brought home ​ [Delta: An Airline and Its Aircraft : The Illustrated History of a Major U.S. Airline and the People Who Made It](https://a.co/d/avVFQMW) ​ by R.E.G. Davies, illustrated by Mike Machat. It must have been a gift to employees. Wow! Suddenly, I didn’t just have to draw the airplanes from memory! Machat’s technical style and clean lines still influence my art today.
 
@@ -46,7 +46,7 @@ Another great influence was the Disney style of cartooning. My favorite cartoon 
 
 [![](https://substackcdn.com/image/fetch/$s_!0A1Y!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4256bd51-5e04-4b8f-a275-eb76a694ac1f_734x262.jpeg)](https://substackcdn.com/image/fetch/$s_!0A1Y!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4256bd51-5e04-4b8f-a275-eb76a694ac1f_734x262.jpeg)
 
-Scrooge McDuck’s appearance in “Christmas on Bear Mountain“, 1947 in Donald Duck #178. He was only a _supporting_ character!
+_Scrooge McDuck’s appearance in “Christmas on Bear Mountain“, 1947 in Donald Duck #178. He was only a _supporting_ character!_
 
 Invented, written, and drawn by Carl Barks, Uncle Scrooge first appeared in print in 1947. In the 90s, his original stories were being reprinted and sold. I switched from airplanes to trying to draw ducks almost immediately. Well, maybe it was ducks in airplanes. At any rate, before I tried to draw people, I was failing forward at drawing anthropomorphic fowl.
 
@@ -59,8 +59,7 @@ It was the first time something clicked in my brain and I remember seeing the fo
 Later, the publisher began to carry the stories and art by Don Rosa, who also professed a love of Barks’ stories from a young age. Rosa bought a humor and technical perfection to his rendering of the Duck stories. Also, his artwork is always incredibly ”busy” with heavily rendered backgrounds complete with sub-stories going on while the characters are speaking in the foreground. My high school art teacher always called my artwork too busy and not composed. I suppose that’s what I was going for!'
 
 [![](https://substackcdn.com/image/fetch/$s_!FJt5!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6506c80e-e640-48b8-b6e9-010992e45643_1280x916.jpeg)](https://substackcdn.com/image/fetch/$s_!FJt5!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6506c80e-e640-48b8-b6e9-010992e45643_1280x916.jpeg)
-
-from ”Island at the Edge of Time” by Don Rosa in Uncle Scrooge #276 (1993). The art! The writing!
+_from ”Island at the Edge of Time” by Don Rosa in Uncle Scrooge #276 (1993). The art! The writing!_
 
 ## Middle School Challenge
 
@@ -71,14 +70,13 @@ In middle school, a shy student transferred into my school and I was glad to inc
 Alongside airplanes, I’ve had an interest in the logos upon them (their livery, as it’s called) as well as designs for the television news presentation. When I was very young, my favorite book was ​[Big Bird Follows the Signs](https://muppet.fandom.com/wiki/Big_Bird_Follows_the_Signs)​. My parents said that one of my first words was “EXIT” since Big Bird used it to leave the opera and I recognized it in every public place, pointing with my little fingers. Today, I really like simple, clear shapes. Saul Bass, who designed the brands for AT&T, Continental Airlines, The Bell Telephone System, and so many more, is definitely an inspiration.
 
 [![](https://substackcdn.com/image/fetch/$s_!STHY!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50a0ef40-8303-42f2-8258-3cc4b409f680_734x262.jpeg)](https://substackcdn.com/image/fetch/$s_!STHY!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F50a0ef40-8303-42f2-8258-3cc4b409f680_734x262.jpeg)
-
-Some of Saul Bass’ many many contributions to the world of logo and brand design.
+_Some of Saul Bass’ many many contributions to the world of logo and brand design._
 
 I always liked the ​[CBS television logo](https://1000logos.net/cbs-logo/)​ the best. The famous eye logo was only supposed to last a season, but became the brand image because it was so easily recognizable. (It wasn’t one of Saul Bass’ logos, but it sure could have been!)
 
 [![](https://substackcdn.com/image/fetch/$s_!TR_W!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75f68890-33c0-40cb-8dc9-99772f9142ea_2400x1350.jpeg)](https://substackcdn.com/image/fetch/$s_!TR_W!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75f68890-33c0-40cb-8dc9-99772f9142ea_2400x1350.jpeg)
 
-The CBS “Eye” designed by ​[William Golden](https://en.wikipedia.org/wiki/William_Golden_(graphic_designer))​
+_The CBS “Eye” designed by ​[William Golden](https://en.wikipedia.org/wiki/William_Golden_(graphic_designer))​_
 
 I do a fair bit more graphic design these days rather than traditional drawing, but as we shall see, they’re all quite related, especially when it comes to religious expression. I could go on about my influences into the present, but you’d be reading all day! Perhaps that will be a good topic to take up in future issues.
 
