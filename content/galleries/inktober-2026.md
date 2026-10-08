@@ -18,4 +18,6 @@ images:
     caption: Ogre
   - image: /assets/images/IMG_1833.jpeg
     caption: Panic
+  - image: /assets/images/IMG_1836.jpeg
+    caption: Stinky
 ---
